@@ -1,18 +1,27 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Mundial.Infra.Model;
-public class SalesmanEntityTypeConfiguration : IEntityTypeConfiguration<Salesman>
+
+namespace Mundial.Infra.EntityConfigurations
 {
-    public void Configure (EntityTypeBuilder<Salesman> builder)
+    public class SalesmanEntityTypeConfiguration : IEntityTypeConfiguration<Salesman>
     {
-        builder.HasKey(s => s.Number);
-
-         builder
-            .Property(s => s.Name)
-            .IsRequired();
-
-         builder
-            .Property(s => s.Number)
-            .IsRequired();      
+        public void Configure (EntityTypeBuilder<Salesman> builder)
+        {
+            builder.HasKey(s => s.Id);
+    
+            builder
+                .Property(s => s.Name)
+                .IsRequired();
+    
+            builder
+                .Property(s => s.Number)
+                .IsRequired();   
+    
+            builder
+                .Property(s => s.CreationDate)
+                .IsRequired();
+               
+        }
     }
 }

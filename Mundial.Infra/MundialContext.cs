@@ -1,6 +1,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Mundial.Infra.Model;
+using Mundial.Infra.EntityConfigurations;
 
 namespace Mundial.Infra
 {
@@ -12,7 +13,8 @@ namespace Mundial.Infra
         public DbSet<Salesman> Salesmens {get; set;}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=blog.db");
+            optionsBuilder
+                .UseSqlServer("server=localhost,3306;uid=mundial;pwd=mundial;database=MundialDB");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

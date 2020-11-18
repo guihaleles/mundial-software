@@ -5,6 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Mundial.Domain.Service.Concrete;
+using Mundial.Infra.Repository;
+using Mundial.Infra.EntityConfigurations;
+using Mundial.Infra;
 
 namespace Mundial.Aplication
 {
@@ -23,6 +26,16 @@ namespace Mundial.Aplication
             services.AddControllers();
 
             services.AddScoped<FileService>();
+
+            services.AddScoped<SalesmanService>();
+
+            services.AddScoped<SalesmanEntityTypeConfiguration>();
+
+            services.AddScoped<SalesmanRepository>();
+
+            services.AddScoped<CheckRepository>();
+
+            services.AddScoped<MundialContext>();
 
         }
 
