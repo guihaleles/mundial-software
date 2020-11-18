@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mundial.Domain", "Mundial.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mundial.Infra", "Mundial.Infra\Mundial.Infra.csproj", "{A18C4706-38BE-47AF-BD66-A4C7176CFB73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teste", "Teste\Teste.csproj", "{036FC8B4-FA32-4485-AD35-94C4EC3E5310}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{A18C4706-38BE-47AF-BD66-A4C7176CFB73}.Release|x64.Build.0 = Release|Any CPU
 		{A18C4706-38BE-47AF-BD66-A4C7176CFB73}.Release|x86.ActiveCfg = Release|Any CPU
 		{A18C4706-38BE-47AF-BD66-A4C7176CFB73}.Release|x86.Build.0 = Release|Any CPU
+		{036FC8B4-FA32-4485-AD35-94C4EC3E5310}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{036FC8B4-FA32-4485-AD35-94C4EC3E5310}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{036FC8B4-FA32-4485-AD35-94C4EC3E5310}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{036FC8B4-FA32-4485-AD35-94C4EC3E5310}.Debug|x64.Build.0 = Debug|Any CPU
+		{036FC8B4-FA32-4485-AD35-94C4EC3E5310}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{036FC8B4-FA32-4485-AD35-94C4EC3E5310}.Debug|x86.Build.0 = Debug|Any CPU
+		{036FC8B4-FA32-4485-AD35-94C4EC3E5310}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{036FC8B4-FA32-4485-AD35-94C4EC3E5310}.Release|Any CPU.Build.0 = Release|Any CPU
+		{036FC8B4-FA32-4485-AD35-94C4EC3E5310}.Release|x64.ActiveCfg = Release|Any CPU
+		{036FC8B4-FA32-4485-AD35-94C4EC3E5310}.Release|x64.Build.0 = Release|Any CPU
+		{036FC8B4-FA32-4485-AD35-94C4EC3E5310}.Release|x86.ActiveCfg = Release|Any CPU
+		{036FC8B4-FA32-4485-AD35-94C4EC3E5310}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,9 @@
+/home/guilhermeleles/git/mundial-software/Teste/bin/Debug/netstandard2.0/Teste.deps.json
+/home/guilhermeleles/git/mundial-software/Teste/bin/Debug/netstandard2.0/Teste.dll
+/home/guilhermeleles/git/mundial-software/Teste/bin/Debug/netstandard2.0/Teste.pdb
+/home/guilhermeleles/git/mundial-software/Teste/obj/Debug/netstandard2.0/Teste.csprojAssemblyReference.cache
+/home/guilhermeleles/git/mundial-software/Teste/obj/Debug/netstandard2.0/Teste.csproj.CoreCompileInputs.cache
+/home/guilhermeleles/git/mundial-software/Teste/obj/Debug/netstandard2.0/Teste.AssemblyInfoInputs.cache
+/home/guilhermeleles/git/mundial-software/Teste/obj/Debug/netstandard2.0/Teste.AssemblyInfo.cs
+/home/guilhermeleles/git/mundial-software/Teste/obj/Debug/netstandard2.0/Teste.dll
+/home/guilhermeleles/git/mundial-software/Teste/obj/Debug/netstandard2.0/Teste.pdb

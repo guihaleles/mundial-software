@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "56O9Muc60OXyYh/E3PWmVel13KBQ9emaSkH22KqL6OYoSV34hIpdsrgnfHbCrZQLl2gj3sh3LoW1icOgJbvwIg==",
+  "success": true,
+  "projectFilePath": "/home/guilhermeleles/git/mundial-software/Teste/Teste.csproj",
+  "expectedPackageFiles": [
+    "/home/guilhermeleles/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/home/guilhermeleles/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

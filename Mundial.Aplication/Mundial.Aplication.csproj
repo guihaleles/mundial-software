@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mundial.Domain\Mundial.Domain.csproj" />
+    <ProjectReference Include="..\Mundial.Infra\Mundial.Infra.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
