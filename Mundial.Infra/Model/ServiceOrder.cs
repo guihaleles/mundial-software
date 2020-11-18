@@ -6,7 +6,7 @@ namespace Mundial.Infra.Model
     {
         public int Number {get; set;}
 
-        public Sales Sales {get; set;}
+        public Salesman Salesman {get; set;}
 
         public Customer Customer {get; set;}
 
