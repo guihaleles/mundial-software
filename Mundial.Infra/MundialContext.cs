@@ -9,7 +9,9 @@ namespace Mundial.Infra
     public class MundialContext: DbContext
     {
 
-        // public DbSet<File> Files {get; set;}
+        public DbSet<File> Files {get; set;}
+
+        public DbSet<Address> Addresses {get; set;}
 
         public DbSet<Salesman> Salesmans {get; set;}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -20,6 +22,11 @@ namespace Mundial.Infra
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             new SalesmanEntityTypeConfiguration().Configure(modelBuilder.Entity<Salesman>());
+
+            new FileEntityTypeConfiguration().Configure(modelBuilder.Entity<File>());
+
+            new AddressEntityTypeConfiguration().Configure(modelBuilder.Entity<Address>());
+
         }
     }
 }

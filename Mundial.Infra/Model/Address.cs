@@ -10,7 +10,7 @@ namespace Mundial.Infra.Model
 
         public string Neighborhood {get; set;}
 
-        public int HouseNumber {get; set;}
+        public int? HouseNumber {get; set;}
 
         public string Complement {get; set;}
 

@@ -8,7 +8,7 @@ namespace Mundial.Infra.Model
 
         public Salesman Salesman {get; set;}
 
-        public Customer Customer {get; set;}
+        public File File {get; set;}
 
         public string Patient {get; set;}
 

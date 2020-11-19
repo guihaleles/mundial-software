@@ -4,48 +4,94 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Mundial.Infra.Model;
 using Mundial.Domain.Service.Concrete;
+using Mundial.Infra.Repository;
 
 namespace Mundial.Aplication.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class FileController : ControllerBase
-    {
-        private readonly ILogger<FileController> _logger;
+    {        private readonly ILogger<FileController> _logger;
 
         private readonly FileService _fileService;
 
-        public FileController(ILogger<FileController> logger, FileService fileService)
+        private readonly FileRepository _fileRepository;
+
+        public FileController(ILogger<FileController> logger,
+         FileService fileService, FileRepository fileRepository)
         {
             _logger = logger;
             _fileService = fileService;
+            _fileRepository = fileRepository;
         }
 
         [HttpGet]
-        public IEnumerable<File> Get()
+        public IActionResult Get()
         {
-            return _fileService.GetFile("");
-            
+            try
+            {
+                return Ok(_fileService.GetAllFile());            
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            }           
+        }
+
+        [Route("GetFileByNumber/{number}")]
+        [HttpGet]
+        public IActionResult GetFileByNumber(int number)
+        {
+            try
+            {
+                return Ok(_fileService.GetValidFileByNumber(number));            
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            }           
         }
 
         [HttpPut]
-        public IActionResult Put(File file)
+        public IActionResult Put(File item)
         {
-            return Ok();
+            try
+            {
+                return Ok(_fileService.PutFile(item));
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            }
         }
 
         [HttpPost]
-        public IActionResult Post(File file)
+        [Route("Update")]
+        public IActionResult Post(File newItem)
         {
-            return Ok();
+            try
+            {
+            return Ok(_fileService.UpdateFile(newItem));
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            } 
         }
 
 
         [HttpDelete]
-        public IActionResult Delete(int Id)
+        [Route("{id}")]
+        public IActionResult Delete(int id)
         {
-            return Ok();
+            try
+            {
+            return Ok(_fileService.DeleteFile(id));
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            } 
         }
     }
 }
-

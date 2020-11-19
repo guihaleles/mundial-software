@@ -27,15 +27,19 @@ namespace Mundial.Aplication
 
             services.AddScoped<FileService>();
 
+            services.AddSingleton<FileEntityTypeConfiguration>();
+
+            services.AddScoped<FileRepository>();
+
             services.AddScoped<SalesmanService>();
 
-            services.AddScoped<SalesmanEntityTypeConfiguration>();
+            services.AddSingleton<SalesmanEntityTypeConfiguration>();
 
             services.AddScoped<SalesmanRepository>();
 
             services.AddScoped<CheckRepository>();
 
-            services.AddScoped<MundialContext>();
+            services.AddTransient<MundialContext>();
 
         }
 

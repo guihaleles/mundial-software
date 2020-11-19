@@ -99,7 +99,7 @@ namespace Mundial.Infra.Repository
             {
                 var itenToExclud = _context.Salesmans.Where(x => x.Id == id).Single();
 
-                itenToExclud.ExclutionDate = DateTime.Now;
+                itenToExclud.ExclutionDate = DateTime.UtcNow;
                
                 var numberOfItens = _context.SaveChanges();
                 
