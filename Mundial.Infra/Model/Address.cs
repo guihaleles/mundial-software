@@ -2,7 +2,7 @@ using System;
 
 namespace Mundial.Infra.Model
 {
-    public class Address
+    public class Address: MundialModel
     {
         public string City {get; set;}
 

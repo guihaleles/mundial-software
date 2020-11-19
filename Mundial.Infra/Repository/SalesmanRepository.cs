@@ -23,9 +23,25 @@ namespace Mundial.Infra.Repository
             }
             catch(Exception e)
             {
-                return new List<Salesman>();
+                throw e;
             }
            
+        }
+
+        public IEnumerable<Salesman> GetAllValidSalesmanByNumber(int number)
+        { 
+            try
+            {
+                var salesmanList = _context.Salesmans
+                                    .Where(x => x.Number == number && x.ExclutionDate == null)
+                                    .ToList(); 
+                return salesmanList;
+            }
+            catch(Exception e)
+            {   
+                throw e;
+            }
+            
         }
 
         public IEnumerable<Salesman> GetAllSalesmanByNumber(int number)
@@ -38,8 +54,24 @@ namespace Mundial.Infra.Repository
                 return salesmanList;
             }
             catch(Exception e)
+            {   
+                throw e;
+            }
+            
+        }
+
+        public IEnumerable<Salesman> GetSalesmanById(int id)
+        { 
+            try
             {
-                return new List<Salesman>();
+                var salesmanList = _context.Salesmans
+                                    .Where(x => x.Id == id)
+                                    .ToList(); 
+                return salesmanList;
+            }
+            catch(Exception e)
+            {   
+                throw e;
             }
             
         }
@@ -57,7 +89,26 @@ namespace Mundial.Infra.Repository
             }
             catch(Exception e)
             {
-                return false;
+                throw e;
+            }
+        }
+
+        public bool DeleteSalesman(int id)
+        {
+            try
+            {
+                var itenToExclud = _context.Salesmans.Where(x => x.Id == id).Single();
+
+                itenToExclud.ExclutionDate = DateTime.Now;
+               
+                var numberOfItens = _context.SaveChanges();
+                
+                return numberOfItens > 0 ? true : false;
+
+            }
+            catch(Exception e)
+            {
+                throw e;
             }
         }
     }

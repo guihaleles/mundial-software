@@ -27,29 +27,71 @@ namespace Mundial.Aplication.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Salesman> Get()
+        public IActionResult Get()
         {
-            return _salesmanService.GetSalesmen("");
-            
+            try
+            {
+                return Ok(_salesmanService.GetAllSalesman());            
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            }           
+        }
+
+        [Route("GetSalesmanByNumber/{number}")]
+        [HttpGet]
+        public IActionResult GetSalesmanByNumber(int number)
+        {
+            try
+            {
+                return Ok(_salesmanService.GetValidSalesmanByNumber(number));            
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            }           
         }
 
         [HttpPut]
         public IActionResult Put(Salesman item)
         {
-            return Ok(_salesmanRepository.PutSalesman(item));
+            try
+            {
+                return Ok(_salesmanService.PutSalesman(item));
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            }
         }
 
         [HttpPost]
         public IActionResult Post(Salesman item)
         {
+            try
+            {
             return Ok();
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            } 
         }
 
 
         [HttpDelete]
-        public IActionResult Delete(int Id)
+        [Route("{id}")]
+        public IActionResult Delete(int id)
         {
-            return Ok();
+            try
+            {
+            return Ok(_salesmanService.DeleteSalesman(id));
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            } 
         }
     }
 }

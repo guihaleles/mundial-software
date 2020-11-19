@@ -2,7 +2,7 @@ using System;
 
 namespace Mundial.Infra.Model
 {
-    public class Product
+    public class Product: MundialModel
     {
         public string Name {get; set;}
 

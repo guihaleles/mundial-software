@@ -2,7 +2,7 @@ using System;
 
 namespace Mundial.Infra.Model
 {
-    public class ServiceOrder
+    public class ServiceOrder: MundialModel
     {
         public int Number {get; set;}
 

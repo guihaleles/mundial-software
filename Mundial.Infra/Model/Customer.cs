@@ -2,7 +2,7 @@ using System;
 
 namespace Mundial.Infra.Model
 {
-    public class Customer
+    public class Customer: MundialModel
     {
         public string Name {get; set;}
         public File CustomerFile {get; set;}
