@@ -7,6 +7,3 @@
 /home/guilhermeleles/git/mundial-software/Mundial.Infra/bin/Debug/netcoreapp3.1/Mundial.Infra.pdb
 /home/guilhermeleles/git/mundial-software/Mundial.Infra/obj/Debug/netcoreapp3.1/Mundial.Infra.dll
 /home/guilhermeleles/git/mundial-software/Mundial.Infra/obj/Debug/netcoreapp3.1/Mundial.Infra.pdb
-/home/guilhermeleles/git/mundial-software/Mundial.Infra/bin/Debug/netcoreapp3.1/Mundial.Infra.runtimeconfig.json
-/home/guilhermeleles/git/mundial-software/Mundial.Infra/bin/Debug/netcoreapp3.1/Mundial.Infra.runtimeconfig.dev.json
-/home/guilhermeleles/git/mundial-software/Mundial.Infra/obj/Debug/netcoreapp3.1/Mundial.Infra.genruntimeconfig.cache

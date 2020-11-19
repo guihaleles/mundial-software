@@ -8,6 +8,8 @@ namespace Mundial.Infra.EntityConfigurations
     {
         public void Configure (EntityTypeBuilder<Salesman> builder)
         {
+            builder.ToTable("Salesmans");
+
             builder.HasKey(s => s.Id);
     
             builder

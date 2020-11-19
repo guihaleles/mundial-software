@@ -16,18 +16,49 @@ namespace Mundial.Infra.Repository
         {  
             try
             {
-                bool v = _context.Database.CanConnect();
-
-                return _context.Salesmens
-                            .Where(x => x.ExclutionDate == null)
-                            .ToList();
-
+                var salesmanList = _context.Salesmans
+                                    .Where(x => x.Id > 0)
+                                    .ToList();
+                return salesmanList;
             }
             catch(Exception e)
             {
                 return new List<Salesman>();
             }
            
+        }
+
+        public IEnumerable<Salesman> GetAllSalesmanByNumber(int number)
+        { 
+            try
+            {
+                var salesmanList = _context.Salesmans
+                                    .Where(x => x.Number == number)
+                                    .ToList(); 
+                return salesmanList;
+            }
+            catch(Exception e)
+            {
+                return new List<Salesman>();
+            }
+            
+        }
+        
+        public bool PutSalesman(Salesman item)
+        {
+            try
+            {
+                _context.Salesmans.Add(item);
+               
+                var numberOfItens = _context.SaveChanges();
+                
+                return numberOfItens > 0 ? true : false;
+
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
         }
     }
 }

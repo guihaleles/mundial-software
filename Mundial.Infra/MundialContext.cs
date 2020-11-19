@@ -1,5 +1,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using Mundial.Infra.Model;
 using Mundial.Infra.EntityConfigurations;
 
@@ -10,11 +11,10 @@ namespace Mundial.Infra
 
         // public DbSet<File> Files {get; set;}
 
-        public DbSet<Salesman> Salesmens {get; set;}
+        public DbSet<Salesman> Salesmans {get; set;}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder
-                .UseSqlServer("server=localhost,3306;uid=mundial;pwd=mundial;database=MundialDB");
+            optionsBuilder.UseMySql("server=localhost;port=3306;user=mundial;password=mundial;database=MundialDB");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

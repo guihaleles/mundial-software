@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Mundial.Infra.Model;
 using Mundial.Domain.Service.Concrete;
+using Mundial.Infra.Repository;
 
 namespace Mundial.Aplication.Controllers
 {
@@ -15,10 +16,14 @@ namespace Mundial.Aplication.Controllers
 
         private readonly SalesmanService _salesmanService;
 
-        public SalesmanController(ILogger<SalesmanController> logger, SalesmanService salesmanService)
+        private readonly SalesmanRepository _salesmanRepository;
+
+        public SalesmanController(ILogger<SalesmanController> logger,
+         SalesmanService salesmanService, SalesmanRepository salesmanRepository)
         {
             _logger = logger;
             _salesmanService = salesmanService;
+            _salesmanRepository = salesmanRepository;
         }
 
         [HttpGet]
@@ -29,13 +34,13 @@ namespace Mundial.Aplication.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put(Salesman file)
+        public IActionResult Put(Salesman item)
         {
-            return Ok();
+            return Ok(_salesmanRepository.PutSalesman(item));
         }
 
         [HttpPost]
-        public IActionResult Post(Salesman file)
+        public IActionResult Post(Salesman item)
         {
             return Ok();
         }
