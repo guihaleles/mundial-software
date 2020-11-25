@@ -33,7 +33,7 @@ namespace Mundial.Infra.Repository
             try
             {
                 var salesmanList = _context.Salesmans
-                                    .Where(x => x.Number == number && x.ExclutionDate == null)
+                                    .Where(x => x.Number == number && x.ExclusionDate == null)
                                     .ToList(); 
                 return salesmanList;
             }
@@ -99,7 +99,7 @@ namespace Mundial.Infra.Repository
             {
                 var itenToExclud = _context.Salesmans.Where(x => x.Id == id).Single();
 
-                itenToExclud.ExclutionDate = DateTime.UtcNow;
+                itenToExclud.ExclusionDate = DateTime.UtcNow;
                
                 var numberOfItens = _context.SaveChanges();
                 

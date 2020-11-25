@@ -4,7 +4,7 @@ CREATE TABLE Address (
         
         CreationDate DATE NOT NULL,
         
-        ExclutionDate DATE,
+        ExclusionDate DATE,
 
         City varchar(255) NOT NULL,
 

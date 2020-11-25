@@ -4,7 +4,7 @@ CREATE TABLE File (
         
         CreationDate DATE NOT NULL,
         
-        ExclutionDate DATE,
+        ExclusionDate DATE,
 
 	Number int NOT NULL,
 

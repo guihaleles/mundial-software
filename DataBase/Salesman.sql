@@ -8,6 +8,6 @@ CREATE TABLE Salesmans (
         
         CreationDate DATE NOT NULL,
         
-        ExclutionDate DATE
+        ExclusionDate DATE
         
 ); 

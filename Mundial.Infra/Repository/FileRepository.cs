@@ -38,7 +38,7 @@ namespace Mundial.Infra.Repository
             try
             {
                 var fileList = _context.Files
-                                    .Where( x => x.ExclutionDate == null)
+                                    .Where( x => x.ExclusionDate == null)
                                     .Include(x => x.CustomerAddress)
                                     .Include(x => x.WorkAddress)
                                     .ToList(); 
@@ -56,7 +56,7 @@ namespace Mundial.Infra.Repository
             try
             {
                 var fileList = _context.Files
-                                    .Where(x => x.Number == number && x.ExclutionDate == null)
+                                    .Where(x => x.Number == number && x.ExclusionDate == null)
                                     .Include(x => x.CustomerAddress)
                                     .Include(x => x.WorkAddress)
                                     .ToList(); 
@@ -110,7 +110,7 @@ namespace Mundial.Infra.Repository
             try
             {
                 var fileList = _context.Files
-                                    .Where(x => x.Id == id && x.ExclutionDate == null)
+                                    .Where(x => x.Id == id && x.ExclusionDate == null)
                                     .Include(x => x.CustomerAddress)
                                     .Include(x => x.WorkAddress)
                                     .ToList(); 
@@ -150,13 +150,13 @@ namespace Mundial.Infra.Repository
                                         .Include(x => x.WorkAddress)                                        
                                         .Single();
 
-                itenToExclud.ExclutionDate = DateTime.UtcNow;
+                itenToExclud.ExclusionDate = DateTime.UtcNow;
 
                 if(itenToExclud.CustomerAddress != null)
-                    itenToExclud.CustomerAddress.ExclutionDate = DateTime.UtcNow;
+                    itenToExclud.CustomerAddress.ExclusionDate = DateTime.UtcNow;
 
                 if(itenToExclud.WorkAddress != null)
-                    itenToExclud.WorkAddress.ExclutionDate = DateTime.UtcNow;
+                    itenToExclud.WorkAddress.ExclusionDate = DateTime.UtcNow;
 
                  _context.Files.Add(newItem);
                
@@ -182,13 +182,13 @@ namespace Mundial.Infra.Repository
                                         .Include(x => x.WorkAddress)                                        
                                         .Single();
 
-                itenToExclud.ExclutionDate = DateTime.UtcNow;
+                itenToExclud.ExclusionDate = DateTime.UtcNow;
 
                 if(itenToExclud.CustomerAddress != null)
-                    itenToExclud.CustomerAddress.ExclutionDate = DateTime.UtcNow;
+                    itenToExclud.CustomerAddress.ExclusionDate = DateTime.UtcNow;
 
                 if(itenToExclud.WorkAddress != null)
-                    itenToExclud.WorkAddress.ExclutionDate = DateTime.UtcNow;
+                    itenToExclud.WorkAddress.ExclusionDate = DateTime.UtcNow;
                
                 var numberOfItens = _context.SaveChanges();
                 

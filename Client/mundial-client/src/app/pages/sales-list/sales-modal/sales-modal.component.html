@@ -1,0 +1,22 @@
+ <div>
+  <h2 mat-dialog-title>Cadastro de vendedor</h2>
+    <mat-dialog-content class="sales-modal-content">
+      <form [formGroup]="form">
+        <mat-form-field appearance="legacy" class="sales-modal-input">
+            <mat-label>Número</mat-label>
+            <input matInput formControlName = "number">
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" class="sales-modal-input">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName = "name">
+        </mat-form-field>
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-raised-button (click) = close()>Calcelar</button>
+      <button mat-raised-button (click) = save()>Salvar</button>
+    </mat-dialog-actions>
+</div>
+
+

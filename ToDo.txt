@@ -1,0 +1,13 @@
+// Front-end
+
+- Lazy-load.
+- Rout-guard. Autenticação e Autorização.
+- Interceptor: Emitindo erros que vem do back-end.
+
+
+// back-end
+
+- Autorização e Autenticação
+- Não permitir vendedores e usuários com o mesmo nome
+- Mudar a string do banco de dados para o App.config
+

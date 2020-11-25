@@ -8,6 +8,6 @@ namespace Mundial.Infra.Model
 
         public DateTime CreationDate {get; set;}
 
-        public DateTime? ExclutionDate {get; set;}
+        public DateTime? ExclusionDate {get; set;}
     }
 }
