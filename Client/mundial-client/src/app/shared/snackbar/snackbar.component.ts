@@ -13,7 +13,6 @@ import { ConfigurableFocusTrapConfig } from '@angular/cdk/a11y/focus-trap/config
 })
 export class SnackbarComponent implements OnInit {
 
-
   constructor(private _snackBar: MatSnackBar) {
   }
 
@@ -26,6 +25,7 @@ export class SnackbarComponent implements OnInit {
     config.duration = 5000;
     config.horizontalPosition = 'end';
     config.verticalPosition = 'top';
+    console.log(config);
     this._snackBar.open(message, 'x', config);
   }
 

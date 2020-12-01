@@ -16,7 +16,20 @@ namespace Mundial.Domain.Service.Concrete
         
         public IEnumerable<Salesman> GetAllSalesman()
         {
-            var itens = _salesmanRepository.GetAllSalesman();
+            var itens = _salesmanRepository.GetAll();
+            switch (itens.Count())
+            {
+                case 0:
+                    throw new Exception("Nenhum vendedor cadastrado");
+                default:
+                    return itens;
+            }         
+
+        }
+
+        public IEnumerable<Salesman> GetAllValidSalesman()
+        {
+            var itens = _salesmanRepository.GetAllValidItens();
             switch (itens.Count())
             {
                 case 0:
@@ -44,7 +57,7 @@ namespace Mundial.Domain.Service.Concrete
            
         }
 
-        public string PutSalesman (Salesman item)
+        public bool PutSalesman (Salesman item)
         {
            var itens =  _salesmanRepository.GetAllSalesmanByNumber(item.Number);
 
@@ -54,37 +67,63 @@ namespace Mundial.Domain.Service.Concrete
            }
            else
            {
-               if(_salesmanRepository.PutSalesman(item))
+               if(_salesmanRepository.PutIten(item))
                {
-                   return "Vendedor cadastrado com sucesso";
+                   return true;
                }
                else
                {
                    throw new Exception("Erro ao cadastrar vendedor");
                }
            }
+        }
+
+        
+        public bool UpdateSalesman(Salesman item)
+        {
+            int oldItemId = item.Id.GetValueOrDefault();            
+
+            var newItem = item;
+            newItem.Id = null;
+
+            var itens =  _salesmanRepository.GetItenById(oldItemId);
+
+            if(itens.Count() == 0)
+            {
+               throw  new Exception("Não existe nanhum vendedor com esse id");
+            }
+            else
+            {
+                if(_salesmanRepository.UpdateIten(item,oldItemId))
+                {
+                   return true;
+                }
+                else
+                {
+                   throw new Exception("Erro ao atualizar vendedor");
+                }
+            }   
         } 
 
-        public string DeleteSalesman (int id)
+        public bool DeleteSalesman (int id)
         {
-            var itens =  _salesmanRepository.GetSalesmanById(id);
+            var itens =  _salesmanRepository.GetItenById(id);
 
-           if(itens.Count() == 0)
-           {
-               throw  new Exception("Não existe um vendendor com esse id");
-           }
-           else
-           {
-               if(_salesmanRepository.DeleteSalesman(id))
+            if(itens.Count() == 0)
+            {
+               throw  new Exception("Não existe nenhum vendendor com esse id");
+            }
+            else
+            {
+               if(_salesmanRepository.DeleteIten(id))
                {
-                   return "Vendedor deletado com sucesso";
+                   return true;
                }
                else
                {
                    throw new Exception("Erro ao deletar vendedor");
                }
-           }
-           
+            }           
         }
 
     }

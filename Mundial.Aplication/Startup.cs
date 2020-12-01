@@ -20,9 +20,25 @@ namespace Mundial.Aplication
 
         public IConfiguration Configuration { get; }
 
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                // options.AddPolicy("CorsPolicy",
+                options.AddDefaultPolicy(
+                              builder =>
+                              {
+                                builder.WithOrigins("http://localhost:4200",
+                                "http://localhost:*", "http://localhost","*",
+                                "http://localhost:5000", "https://localhost:5001")
+                                                .AllowAnyHeader()
+                                                .AllowAnyMethod();
+                              });
+            });
+
             services.AddControllers();
 
             services.AddScoped<FileService>();
@@ -51,9 +67,12 @@ namespace Mundial.Aplication
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
+            
+            // app.UseCors("CorsPolicy");
+            app.UseCors();
 
             app.UseAuthorization();
 

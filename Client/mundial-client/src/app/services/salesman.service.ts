@@ -10,7 +10,7 @@ import{ Salesman} from '../models/salesman'
 })
 export class SalesmanService {
 
-  private readonly SalesmanAPI = `${environment.API}/salesman`;
+  private readonly SalesmanAPI = `${environment.API}/Salesman`;
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +20,19 @@ export class SalesmanService {
   }
 
   putSalesman(iten:Salesman) {
-    return this.http.post(this.SalesmanAPI,Salesman).pipe(
+    return this.http.put(this.SalesmanAPI,Salesman).pipe(
+      take(1)
+    );
+  }
+
+  updateSaelsman(iten:Salesman){
+    return this.http.post(`${this.SalesmanAPI}/Update`,iten).pipe(
+      take(1)
+    );
+  }
+
+  deleteSalesman(id:number){
+    return this.http.delete(`${this.SalesmanAPI}/${id}`).pipe(
       take(1)
     );
   }

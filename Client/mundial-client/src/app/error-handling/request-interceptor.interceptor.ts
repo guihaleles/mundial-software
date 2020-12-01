@@ -10,24 +10,32 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, finalize, tap } from 'rxjs/operators';
 import { SnackbarComponent } from '../shared/snackbar/snackbar.component';
+import { GlobalService } from '../services/global.service';
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
 
-  constructor(private snackbar :SnackbarComponent) {}
+  constructor(private snackbar :SnackbarComponent, private global: GlobalService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    this.global.setIsLoading(true);
+    console.log(true);
+
     return next.handle(request).pipe(
-      tap(evt => {
+      tap(evt => {     
+        console.log(evt); 
         if (evt instanceof HttpResponse) {
             // if(evt.body && evt.body.success){
             //     this.snackbar.openuSuccessSnackBar('Sucesso!')
             // }}
-            this.snackbar.openuSuccessSnackBar('Sucesso!');
+            this.snackbar.openuSuccessSnackBar(`Sucesso! ${evt.statusText}`);
+            this.global.setIsLoading(false);
           }}
       ),
 
       catchError((error: HttpErrorResponse) => {
+        this.global.setIsLoading(false);
         let errorMsg = '';
         if (error.error instanceof ErrorEvent) {
           console.log('this is client side error');
@@ -35,11 +43,14 @@ export class RequestInterceptor implements HttpInterceptor {
         }
         else {
           console.log('this is server side error');
-          errorMsg = `${error.message}`;
+          console.log(error);
+          console.log();
+          errorMsg = `Erro: ${error.error.message}`;
         }
-        this.snackbar.openErrorSnackBar(errorMsg);
-        return throwError(errorMsg);
+        // this.snackbar.openErrorSnackBar(errorMsg);
+        return throwError(new Error(errorMsg));
       })
     );
   }
+
 }

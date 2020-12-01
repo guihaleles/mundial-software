@@ -11,9 +11,10 @@ import { SalesmanService } from 'src/app/services/salesman.service';
 })
 export class SalesListComponent implements OnInit {
   search: string = "";
-  displayedColumns: string[] = ['number', 'name', 'creationDate', 'exclusionDate'];
+  displayedColumns: string[] = ['number', 'name', 'creationDate', 'edit', 'exclude'];
   salesList: Array<Salesman> = [];
   dataSource = this.salesList;
+  isloading: boolean = false;
 
   constructor(public dialog: MatDialog, private salesService: SalesmanService) { }
 
@@ -23,23 +24,42 @@ export class SalesListComponent implements OnInit {
 
   getSalesmanList(){
     this.salesService.getSalesmanList().subscribe(
-      (value) => {
-        this.salesList = value;
-        console.log(value);
+      (values) => {
+        this.salesList = Salesman.objectsToSalesman(values);
+        console.log(this.salesList);
         this.dataSource = [...this.salesList]
       }
     )
-
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(SalesModalComponent,{
-      panelClass: 'dialog-class'
-    });
+  create(){
+    this.openDialog(undefined)
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog result: ' + result);
+  edit(item:Salesman){
+    console.log(item);
+    this.openDialog(item);
+  }
+
+  openDialog(item?: Salesman) {
+    const dialogRef = this.dialog.open(SalesModalComponent,{
+      data: item ,
+      panelClass: 'dialog-class'
+    },);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if(result)
+        this.getSalesmanList();
     });
+  }
+
+  delete(item:Salesman){
+    console.log(item);
+    let id = item.Id;
+    console.log(id);
+    this.salesService.deleteSalesman(id as number).subscribe(() => {
+        this.getSalesmanList();
+      })
   }
 
 }

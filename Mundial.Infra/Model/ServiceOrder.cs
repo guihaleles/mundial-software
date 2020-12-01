@@ -4,8 +4,6 @@ namespace Mundial.Infra.Model
 {
     public class ServiceOrder: MundialModel
     {
-        public int Number {get; set;}
-
         public Salesman Salesman {get; set;}
 
         public File File {get; set;}

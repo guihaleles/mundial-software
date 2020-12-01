@@ -2,37 +2,23 @@ using System;
 using System.Collections.Generic;
 using Mundial.Infra.Model;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 namespace Mundial.Infra.Repository
 {
-    public class SalesmanRepository
+    public class SalesmanRepository: BaseRepository<Salesman>
     {
-        private readonly MundialContext _context;
-        public SalesmanRepository(MundialContext context)
-        {
-            _context = context;
-        }
+        private readonly DbSet<Salesman> _SalesMancontext;
 
-        public IEnumerable<Salesman> GetAllSalesman()
-        {  
-            try
-            {
-                var salesmanList = _context.Salesmans
-                                    .Where(x => x.Id > 0)
-                                    .ToList();
-                return salesmanList;
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
-           
+        public SalesmanRepository(MundialContext context) : base(context)
+        {
+            _SalesMancontext = context.Set<Salesman>();
         }
 
         public IEnumerable<Salesman> GetAllValidSalesmanByNumber(int number)
         { 
             try
             {
-                var salesmanList = _context.Salesmans
+                var salesmanList = _SalesMancontext
                                     .Where(x => x.Number == number && x.ExclusionDate == null)
                                     .ToList(); 
                 return salesmanList;
@@ -48,7 +34,7 @@ namespace Mundial.Infra.Repository
         { 
             try
             {
-                var salesmanList = _context.Salesmans
+                var salesmanList = _SalesMancontext
                                     .Where(x => x.Number == number)
                                     .ToList(); 
                 return salesmanList;
@@ -60,56 +46,6 @@ namespace Mundial.Infra.Repository
             
         }
 
-        public IEnumerable<Salesman> GetSalesmanById(int id)
-        { 
-            try
-            {
-                var salesmanList = _context.Salesmans
-                                    .Where(x => x.Id == id)
-                                    .ToList(); 
-                return salesmanList;
-            }
-            catch(Exception e)
-            {   
-                throw e;
-            }
-            
-        }
-        
-        public bool PutSalesman(Salesman item)
-        {
-            try
-            {
-                _context.Salesmans.Add(item);
-               
-                var numberOfItens = _context.SaveChanges();
-                
-                return numberOfItens > 0 ? true : false;
 
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public bool DeleteSalesman(int id)
-        {
-            try
-            {
-                var itenToExclud = _context.Salesmans.Where(x => x.Id == id).Single();
-
-                itenToExclud.ExclusionDate = DateTime.UtcNow;
-               
-                var numberOfItens = _context.SaveChanges();
-                
-                return numberOfItens > 0 ? true : false;
-
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
-        }
     }
 }

@@ -14,6 +14,7 @@ namespace Mundial.Infra
         public DbSet<Address> Addresses {get; set;}
 
         public DbSet<Salesman> Salesmans {get; set;}
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql("server=localhost;port=3306;user=mundial;password=mundial;database=MundialDB");

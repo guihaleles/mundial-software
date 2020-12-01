@@ -1,8 +1,8 @@
 // Front-end
 
+- Atualizar todos os models com o construtor igual Salesman e os metodos de conversão de objeto.
 - Lazy-load.
 - Rout-guard. Autenticação e Autorização.
-- Interceptor: Emitindo erros que vem do back-end.
 
 
 // back-end
@@ -10,4 +10,9 @@
 - Autorização e Autenticação
 - Não permitir vendedores e usuários com o mesmo nome
 - Mudar a string do banco de dados para o App.config
+
+
+//Serviço de sincronização dos banco de dados
+
+
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.Extensions.Logging;
 using Mundial.Infra.Model;
 using Mundial.Domain.Service.Concrete;
@@ -26,8 +27,23 @@ namespace Mundial.Aplication.Controllers
             _salesmanRepository = salesmanRepository;
         }
 
+        [EnableCors]
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetAllValid()
+        {
+            try
+            {
+                return Ok(_salesmanService.GetAllValidSalesman());            
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            }           
+        }
+
+        [Route("GetAllSalesman")]
+        [HttpGet]
+        public IActionResult GetAll()
         {
             try
             {
@@ -66,16 +82,17 @@ namespace Mundial.Aplication.Controllers
             }
         }
 
+        [Route("Update")]
         [HttpPost]
         public IActionResult Post(Salesman item)
         {
             try
             {
-            return Ok();
+            return Ok(_salesmanService.UpdateSalesman(item));
             }
             catch(Exception e)
             {
-                return StatusCode(500,e.Message);
+                return StatusCode(500,e);
             } 
         }
 

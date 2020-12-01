@@ -4,8 +4,6 @@ namespace Mundial.Infra.Model
 {
     public class File: MundialModel
     {
-        public int Number {get; set;}
-
         public DateTime CreationFileDate {get; set;}
 
         public string Name { get; set; }
