@@ -42,6 +42,43 @@ namespace Mundial.Domain.Service.Concrete
 
         }
 
+        public virtual T GetValidByNumber(int number)
+        {
+            var itens =  _baseRepository.GetAllValidItenByNumber(number);
+
+            switch (itens.Count())
+            {
+                case 0:
+                    throw new Exception($"Não existe nenhum cadastro de {name} com esse número");
+                case 1:
+                    return itens.First();
+                default:
+                    throw new Exception($" {name}: {itens.Count().ToString()} itens cadastrados com o mesmo número");               
+            }
+           
+        }
+
+        public virtual bool Putiten (T item)
+        {
+           var itens =  _baseRepository.GetAllValidItenByNumber(item.Number);
+
+           if(itens.Count() > 0)
+           {
+               throw  new Exception($"{name}: Já existe um item com esse número");
+           }
+           else
+           {
+               if(_baseRepository.PutIten(item))
+               {
+                   return true;
+               }
+               else
+               {
+                   throw new Exception($"Erro ao cadastrar {name}");
+               }
+           }
+        }
+
         
         public virtual bool Update(T item)
         {

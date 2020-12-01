@@ -20,7 +20,7 @@ namespace Mundial.Infra.Repository
                 return v;
 
             }
-            catch(Exception e)
+            catch
             {
                 return false;
             }

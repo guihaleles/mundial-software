@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Mundial.Infra.Model;
@@ -8,16 +9,16 @@ using Mundial.Infra.Repository;
 
 namespace Mundial.Aplication.Controllers
 {
-    [ApiController]
     [Route("[controller]")]
-    public class FileController : ControllerBase
-    {        private readonly ILogger<FileController> _logger;
+    [ApiController]
+    public class FileControllerOld : ControllerBase
+    {        private readonly ILogger<FileControllerOld> _logger;
 
         private readonly FileService _fileService;
 
         private readonly FileRepository _fileRepository;
 
-        public FileController(ILogger<FileController> logger,
+        public FileControllerOld(ILogger<FileControllerOld> logger,
          FileService fileService, FileRepository fileRepository)
         {
             _logger = logger;
@@ -25,12 +26,28 @@ namespace Mundial.Aplication.Controllers
             _fileRepository = fileRepository;
         }
 
+
+        // [EnableCors]
+        [HttpGet]
+        public IActionResult GetAllValid()
+        {
+            try
+            {
+                return Ok(_fileService.GetAllValid());            
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            }           
+        }
+
+        [Route("GetAllFiles")]
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
-                return Ok(_fileService.GetAllFile());            
+                return Ok(_fileService.GetAll());            
             }
             catch(Exception e)
             {
@@ -44,7 +61,7 @@ namespace Mundial.Aplication.Controllers
         {
             try
             {
-                return Ok(_fileService.GetValidFileByNumber(number));            
+                return Ok(_fileService.GetValidByNumber(number));            
             }
             catch(Exception e)
             {
@@ -57,7 +74,7 @@ namespace Mundial.Aplication.Controllers
         {
             try
             {
-                return Ok(_fileService.PutFile(item));
+                return Ok(_fileService.Putiten(item));
             }
             catch(Exception e)
             {
@@ -71,7 +88,7 @@ namespace Mundial.Aplication.Controllers
         {
             try
             {
-            return Ok(_fileService.UpdateFile(newItem));
+            return Ok(_fileService.Update(newItem));
             }
             catch(Exception e)
             {
@@ -86,7 +103,7 @@ namespace Mundial.Aplication.Controllers
         {
             try
             {
-            return Ok(_fileService.DeleteFile(id));
+            return Ok(_fileService.Delete(id));
             }
             catch(Exception e)
             {

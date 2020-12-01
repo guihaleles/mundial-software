@@ -9,31 +9,29 @@ using Mundial.Infra.Repository;
 
 namespace Mundial.Aplication.Controllers
 {
-    [ApiController]
     [Route("[controller]")]
-    public class SalesmanController : ControllerBase
+    [ApiController]
+    public abstract class BaseController<T> : ControllerBase where T : MundialModel
     {
-        private readonly ILogger<SalesmanController> _logger;
+        private readonly ILogger<BaseController<T>> _logger;
 
-        private readonly SalesmanService _salesmanService;
+        private readonly BaseService<T> _baseService;
 
-        private readonly SalesmanRepository _salesmanRepository;
 
-        public SalesmanController(ILogger<SalesmanController> logger,
-         SalesmanService salesmanService, SalesmanRepository salesmanRepository)
+
+        public BaseController(ILogger<BaseController<T>> logger,
+         BaseService<T> baseService)
         {
             _logger = logger;
-            _salesmanService = salesmanService;
-            _salesmanRepository = salesmanRepository;
+            _baseService = baseService;
         }
 
-        [EnableCors]
         [HttpGet]
-        public IActionResult GetAllValid()
+        public virtual IActionResult GetAllValid()
         {
             try
             {
-                return Ok(_salesmanService.GetAllValidSalesman());            
+                return Ok(_baseService.GetAllValid());            
             }
             catch(Exception e)
             {
@@ -41,13 +39,13 @@ namespace Mundial.Aplication.Controllers
             }           
         }
 
-        [Route("GetAllSalesman")]
+        [Route("GetAll")]
         [HttpGet]
-        public IActionResult GetAll()
+        public virtual IActionResult GetAll()
         {
             try
             {
-                return Ok(_salesmanService.GetAllSalesman());            
+                return Ok(_baseService.GetAll());            
             }
             catch(Exception e)
             {
@@ -55,13 +53,13 @@ namespace Mundial.Aplication.Controllers
             }           
         }
 
-        [Route("GetSalesmanByNumber/{number}")]
+        [Route("GetByNumber/{number}")]
         [HttpGet]
-        public IActionResult GetSalesmanByNumber(int number)
+        public virtual IActionResult GetByNumber(int number)
         {
             try
             {
-                return Ok(_salesmanService.GetValidSalesmanByNumber(number));            
+                return Ok(_baseService.GetValidByNumber(number));            
             }
             catch(Exception e)
             {
@@ -70,11 +68,11 @@ namespace Mundial.Aplication.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put(Salesman item)
+        public virtual IActionResult Put(T item)
         {
             try
             {
-                return Ok(_salesmanService.PutSalesman(item));
+                return Ok(_baseService.Putiten(item));
             }
             catch(Exception e)
             {
@@ -84,11 +82,11 @@ namespace Mundial.Aplication.Controllers
 
         [Route("Update")]
         [HttpPost]
-        public IActionResult Post(Salesman item)
+        public virtual IActionResult Post(T item)
         {
             try
             {
-            return Ok(_salesmanService.UpdateSalesman(item));
+            return Ok(_baseService.Update(item));
             }
             catch(Exception e)
             {
@@ -99,11 +97,11 @@ namespace Mundial.Aplication.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult Delete(int id)
+        public virtual IActionResult Delete(int id)
         {
             try
             {
-            return Ok(_salesmanService.DeleteSalesman(id));
+            return Ok(_baseService.Delete(id));
             }
             catch(Exception e)
             {

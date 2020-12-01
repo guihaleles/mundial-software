@@ -25,15 +25,15 @@ namespace Mundial.Infra.EntityConfigurations
                 .IsRequired();
 
 
-            builder 
-                .HasOne(s => s.CustomerAddress)
-                .WithMany()
-                .HasForeignKey(s => s.CustomerAddressId);
+            // builder 
+            //     .HasOne(s => s.CustomerAddress)
+            //     .WithMany()
+            //     .HasForeignKey(s => s.CustomerAddressId);
 
-            builder 
-                .HasOne(s => s.WorkAddress)
-                .WithMany()
-                .HasForeignKey(s => s.WorkAddressId);
+            // builder 
+            //     .HasOne(s => s.WorkAddress)
+            //     .WithMany()
+            //     .HasForeignKey(s => s.WorkAddressId);
                 
         }
     }

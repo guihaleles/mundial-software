@@ -1,12 +1,12 @@
 /home/guilhermeleles/git/mundial-software/Mundial.Domain/bin/Debug/netcoreapp3.1/Mundial.Domain.deps.json
 /home/guilhermeleles/git/mundial-software/Mundial.Domain/bin/Debug/netcoreapp3.1/Mundial.Domain.dll
 /home/guilhermeleles/git/mundial-software/Mundial.Domain/bin/Debug/netcoreapp3.1/Mundial.Domain.pdb
+/home/guilhermeleles/git/mundial-software/Mundial.Domain/bin/Debug/netcoreapp3.1/Mundial.Infra.dll
+/home/guilhermeleles/git/mundial-software/Mundial.Domain/bin/Debug/netcoreapp3.1/Mundial.Infra.pdb
 /home/guilhermeleles/git/mundial-software/Mundial.Domain/obj/Debug/netcoreapp3.1/Mundial.Domain.csprojAssemblyReference.cache
 /home/guilhermeleles/git/mundial-software/Mundial.Domain/obj/Debug/netcoreapp3.1/Mundial.Domain.csproj.CoreCompileInputs.cache
 /home/guilhermeleles/git/mundial-software/Mundial.Domain/obj/Debug/netcoreapp3.1/Mundial.Domain.AssemblyInfoInputs.cache
 /home/guilhermeleles/git/mundial-software/Mundial.Domain/obj/Debug/netcoreapp3.1/Mundial.Domain.AssemblyInfo.cs
+/home/guilhermeleles/git/mundial-software/Mundial.Domain/obj/Debug/netcoreapp3.1/Mundial.Domain.csproj.CopyComplete
 /home/guilhermeleles/git/mundial-software/Mundial.Domain/obj/Debug/netcoreapp3.1/Mundial.Domain.dll
 /home/guilhermeleles/git/mundial-software/Mundial.Domain/obj/Debug/netcoreapp3.1/Mundial.Domain.pdb
-/home/guilhermeleles/git/mundial-software/Mundial.Domain/bin/Debug/netcoreapp3.1/Mundial.Infra.dll
-/home/guilhermeleles/git/mundial-software/Mundial.Domain/bin/Debug/netcoreapp3.1/Mundial.Infra.pdb
-/home/guilhermeleles/git/mundial-software/Mundial.Domain/obj/Debug/netcoreapp3.1/Mundial.Domain.csproj.CopyComplete

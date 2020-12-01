@@ -8,9 +8,21 @@ namespace Mundial.Infra.Model
 
         public string Name { get; set; }
 
-        public int? CustomerAddressId {get; set;}
+        // public int? CustomerAddressId {get; set;}
+
+        public string City {get; set;}
+
+        public string Street {get; set;}
+
+        public string Neighborhood {get; set;}
+
+        public int? HouseNumber {get; set;}
+
+        public string Complement {get; set;}
+
+        public string CEP {get; set;}
         
-        public Address CustomerAddress {get; set;}
+        // public Address CustomerAddress {get; set;}
 
         public string PhoneNumber {get; set;}
 
@@ -18,9 +30,21 @@ namespace Mundial.Infra.Model
 
         public float? Salary {get; set;}
 
-        public int? WorkAddressId {get; set;}
+        // public int? WorkAddressId {get; set;}
 
-        public Address WorkAddress {get; set;}
+        public string WorkCity {get; set;}
+
+        public string WorkStreet {get; set;}
+
+        public string WorkNeighborhood {get; set;}
+
+        public int? WorkNumber {get; set;}
+
+        public string WorkComplement {get; set;}
+
+        public string WorkCEP {get; set;}
+
+        // public Address WorkAddress {get; set;}
      
         public int? CPF {get; set;}
 

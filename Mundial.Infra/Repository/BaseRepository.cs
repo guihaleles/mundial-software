@@ -48,6 +48,41 @@ namespace Mundial.Infra.Repository
         }
 
 
+        public virtual IEnumerable<T> GetAllItenByNumber(int number)
+        { 
+            try
+            {
+                var itens = _dbSet.Where(x => x.Number == number)
+                                    .ToList(); 
+                return itens;
+            }
+            catch(Exception e)
+            {   
+                throw e;
+            }
+            
+        }
+
+
+
+        public virtual IEnumerable<T> GetAllValidItenByNumber(int number)
+        { 
+            try
+            {
+                var itens = _dbSet.Where(x => x.Number == number 
+                                        && x.ExclusionDate == null)
+                                    .ToList(); 
+                return itens;
+            }
+            catch(Exception e)
+            {   
+                throw e;
+            }
+            
+        }
+
+
+
         public virtual IEnumerable<T> GetItenById(int id)
         { 
             try

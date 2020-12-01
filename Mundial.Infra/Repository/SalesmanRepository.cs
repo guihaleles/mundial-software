@@ -14,37 +14,7 @@ namespace Mundial.Infra.Repository
             _SalesMancontext = context.Set<Salesman>();
         }
 
-        public IEnumerable<Salesman> GetAllValidSalesmanByNumber(int number)
-        { 
-            try
-            {
-                var salesmanList = _SalesMancontext
-                                    .Where(x => x.Number == number && x.ExclusionDate == null)
-                                    .ToList(); 
-                return salesmanList;
-            }
-            catch(Exception e)
-            {   
-                throw e;
-            }
-            
-        }
 
-        public IEnumerable<Salesman> GetAllSalesmanByNumber(int number)
-        { 
-            try
-            {
-                var salesmanList = _SalesMancontext
-                                    .Where(x => x.Number == number)
-                                    .ToList(); 
-                return salesmanList;
-            }
-            catch(Exception e)
-            {   
-                throw e;
-            }
-            
-        }
 
 
     }
