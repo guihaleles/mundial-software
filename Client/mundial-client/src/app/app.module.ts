@@ -10,20 +10,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './pages/home/home.component';
-import { FileComponent } from './pages/file/file.component';
 import { SalesmanModule} from './pages/sales-list/salesman.module';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { RequestInterceptor } from './error-handling/request-interceptor.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { NavbarComponent } from './appComponents/navbar/navbar.component';
 import { GlobalErrorHandler } from './error-handling/global-error-handler.service';
+import { FileModule } from './pages/file/file.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    FileComponent,
     NavbarComponent
   ],
   imports: [
@@ -32,6 +31,7 @@ import { GlobalErrorHandler } from './error-handling/global-error-handler.servic
     BrowserAnimationsModule,
     MaterialModule,
     SalesmanModule,
+    FileModule,
     HttpClientModule,
     SharedModule
 

@@ -1,80 +1,113 @@
-import { Address } from './address';
 import { MundialModel } from './mundial-model';
 
 export class File extends MundialModel {
-  public Number: Number;
 
   public CreationFileDate: Date;
 
-  public Name: String;
+  public Name: string;
 
-  public CustomerAddressId: Number;
+  // public CustomerAddressId: number;
 
-  public CustomerAddress: Address;
+  // public CustomerAddress? Address;
+  public City?: string;
 
-  public PhoneNumber: String;
+  public Street?: string; 
 
-  public Profession: String;
+  public Neighborhood?: string; 
 
-  public Salary: Number;
+  public HouseNumber?: number; 
 
-  public WorkAddressId: Number;
+  public Complement?: string; 
 
-  public WorkAddress: Address;
+  public CEP?: string;
 
-  public CPF: Number;
+  public PhoneNumber?: string;
 
-  public RG: Number;
+  public Profession?: string;
 
-  public Work: String;
+  public Salary?: number;
 
-  public DateOfBirth: Date;
+  // public WorkAddressId?: number;
 
-  public PartnerName: String;
+  // public WorkAddress?: Address;
 
-  public PartnerWork: String;
+  public WorkCity?: string;
 
-  public PartnerPhone: String;
+  public WorkStreet?: string; 
 
-  public PartnerSalary: Number;
+  public WorkNeighborhood?: string; 
 
-  public ParentsObservation: String;
+  public WorkNumber?: number; 
 
-  public OthersStores: String;
+  public WorkComplement?: string; 
 
-  public FriendName: String;
+  public WorkCEP?: string;
 
-  public FriendsPhone: String;
+  public CPF?: number;
 
-  public FileObservation: String;
+  public RG?: number;
+
+  public Work?: string;
+
+  public DateOfBirth?: Date;
+
+  public PartnerName?: string;
+
+  public PartnerWork?: string;
+
+  public PartnerPhone?: string;
+
+  public PartnerSalary?: number;
+
+  public ParentsObservation?: string;
+
+  public OthersStores?: string;
+
+  public FriendName?: string;
+
+  public FriendsPhone?: string;
+
+  public FileObservation?: string;
 
   constructor(
     CreationDate: Date,
-    Number: Number,
+    Number: number,
     CreationFileDate: Date,
-    Name: String,
-    CustomerAddressId: Number,
-    CustomerAddress: Address,
-    PhoneNumber: String,
-    Profession: String,
-    Salary: Number,
-    WorkAddressId: Number,
-    WorkAddress: Address,
-    CPF: Number,
-    RG: Number,
-    Work: String,
-    DateOfBirth: Date,
-    PartnerName: String,
-    PartnerWork: String,
-    PartnerPhone: String,
-    PartnerSalary: Number,
-    ParentsObservation: String,
-    OthersStores: String,
-    FriendName: String,
-    FriendsPhone: String,
-    FileObservation: String
+    Name: string,
+    // CustomerAddressId?: number,
+    // CustomerAddress?: Address,
+    City?: string,
+    Street?: string,   
+    Neighborhood?: string,  
+    HouseNumber?: number,   
+    Complement?: string,
+    CEP?: string,
+    PhoneNumber?: string,
+    Profession?: string,
+    Salary?: number,
+    // WorkAddressId?: number,
+    // WorkAddress?: Address,
+    WorkCity?: string,
+    WorkStreet?: string,   
+    WorkNeighborhood?: string,  
+    WorkNumber?: number,   
+    WorkComplement?: string,
+    WorkCEP?: string,
+    CPF?: number,
+    RG?: number,
+    Work?: string,
+    DateOfBirth?: Date,
+    PartnerName?: string,
+    PartnerWork?: string,
+    PartnerPhone?: string,
+    PartnerSalary?: number,
+    ParentsObservation?: string,
+    OthersStores?: string,
+    FriendName?: string,
+    FriendsPhone?: string,
+    FileObservation?: string
   ) {
-    super(CreationDate);
+    super(CreationDate, Number);
 
     this.Number = Number;
 
@@ -82,9 +115,21 @@ export class File extends MundialModel {
 
     this.Name = Name;
 
-    this.CustomerAddressId = CustomerAddressId;
+    // this.CustomerAddressId = CustomerAddressId;
 
-    this.CustomerAddress = CustomerAddress;
+    // this.CustomerAddress = CustomerAddress;
+
+    this.City = City;
+
+    this.Street = Street; 
+
+    this.Neighborhood = Neighborhood;  
+
+    this.HouseNumber = HouseNumber; 
+
+    this.Complement = Complement;
+
+    this.CEP = CEP;
 
     this.PhoneNumber = PhoneNumber;
 
@@ -92,9 +137,21 @@ export class File extends MundialModel {
 
     this.Salary = Salary;
 
-    this.WorkAddressId = WorkAddressId;
+    // this.WorkAddressId = WorkAddressId;
 
-    this.WorkAddress = WorkAddress;
+    // this.WorkAddress = WorkAddress;
+
+    this.WorkCity = WorkCity;
+
+    this.WorkStreet = WorkStreet; 
+
+    this.WorkNeighborhood = WorkNeighborhood;  
+
+    this.WorkNumber = WorkNumber; 
+
+    this.WorkComplement = WorkComplement;
+
+    this.WorkCEP = WorkCEP;
 
     this.CPF = CPF;
 
@@ -121,5 +178,53 @@ export class File extends MundialModel {
     this.FriendsPhone = FriendsPhone;
 
     this.FileObservation = FileObservation;
+  }
+
+  static objectToClass(item: any): File{
+    return new File(
+      item.creationDate,
+      item.number,
+      item.creationFileDate,
+      item.name,
+      item.city ,
+      item.street ,   
+      item.neighborhood ,  
+      item.houseNumber ,   
+      item.complement ,
+      item.cEP ,
+      item.phoneNumber ,
+      item.profession ,
+      item.salary ,
+      item.workCity ,
+      item.workStreet ,   
+      item.workNeighborhood ,  
+      item.workNumber ,   
+      item.workComplement ,
+      item.workCEP ,
+      item.cPF ,
+      item.rG ,
+      item.work ,
+      item.dateOfBirth ,
+      item.partnerName ,
+      item.partnerWork ,
+      item.partnerPhone ,
+      item.partnerSalary ,
+      item.parentsObservation ,
+      item.othersStores ,
+      item.friendName ,
+      item.friendsPhone ,
+      item.fileObservation 
+    )
+  }
+
+  static objectsToClass(itens: any[]): File[]{
+    let array:File[] = [];
+    console.log(itens);
+    
+    itens.forEach((item)=> {
+      array.push(File.objectToClass(item))
+    })
+
+    return array;
   }
 }

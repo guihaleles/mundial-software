@@ -23,7 +23,6 @@ namespace Mundial.Aplication.Controllers
         {
             _logger = logger;
             _salesmanService = salesmanService;
-
         }
  
     }

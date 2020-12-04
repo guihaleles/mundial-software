@@ -13,7 +13,7 @@ import { pipe, throwError } from 'rxjs';
 export class SalesModalComponent implements OnInit {
 
   form: FormGroup;
-  isediting: boolean = false;
+  isEditing: boolean = false;
 
   constructor(public dialogRef: MatDialogRef<SalesModalComponent>,
     private salesService: SalesmanService, private formBuilder: FormBuilder,
@@ -25,7 +25,7 @@ export class SalesModalComponent implements OnInit {
           number:[data.Number,Validators.required],
           name:[data.Name, Validators.required]
         })
-        this.isediting = true;
+        this.isEditing = true;
       }
       else{
         this.form = this.formBuilder.group({
@@ -41,14 +41,26 @@ export class SalesModalComponent implements OnInit {
   
 
   save() {
-
-    if(!this.isediting){
-      this.putNewSalesman();
-    }else if(this.data.Id){
-      this.updateSalesman();
-    }else{
-      throw Error("Não foi possível salvar")
+    
+    if(!this.form.valid){
+      Object.keys(this.form.controls).forEach(field => { 
+        const control = this.form.get(field);
+        if(control)           
+          control.markAsTouched({ onlySelf: true });       
+      });
+      throw Error("Alguns campos obrigatórios não foram preenchidos")
     }
+    else{
+
+      if(!this.isEditing){
+        this.putNewSalesman();
+      }else if(this.data.Id){
+        this.updateSalesman();
+      }else{
+        throw Error("Não foi possível salvar")
+      }
+
+    }    
     
   }
 
@@ -62,7 +74,7 @@ export class SalesModalComponent implements OnInit {
     let newSalesman = (new Salesman(new Date(), values.number, values.name));
     console.log("putNewSalesman");
     console.log(newSalesman);
-    this.salesService.putSalesman(newSalesman).subscribe(
+    this.salesService.put(newSalesman).subscribe(
       () => this.dialogRef.close(true),
     );
   }
@@ -73,7 +85,7 @@ export class SalesModalComponent implements OnInit {
     let salesmanToUpdate = (new Salesman(new Date(), values.number, values.name,this.data.Id));
     console.log(salesmanToUpdate);
     console.log("updateSalesman");
-    this.salesService.updateSaelsman(salesmanToUpdate).subscribe(
+    this.salesService.update(salesmanToUpdate).subscribe(
       () => this.dialogRef.close(true),
     );
   }

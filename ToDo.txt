@@ -1,12 +1,14 @@
 // Front-end
 
 - Atualizar todos os models com o construtor igual Salesman e os metodos de conversão de objeto.
+- Resolver Date time, formato e diferença com o back-end.
 - Lazy-load.
 - Rout-guard. Autenticação e Autorização.
 
 
 // back-end
 
+- Alterar de vendedor para usuário
 - Autorização e Autenticação
 - Não permitir vendedores e usuários com o mesmo nome
 - Mudar a string do banco de dados para o App.config

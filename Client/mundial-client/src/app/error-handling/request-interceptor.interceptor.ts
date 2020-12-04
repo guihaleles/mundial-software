@@ -26,11 +26,14 @@ export class RequestInterceptor implements HttpInterceptor {
       tap(evt => {     
         console.log(evt); 
         if (evt instanceof HttpResponse) {
-            // if(evt.body && evt.body.success){
-            //     this.snackbar.openuSuccessSnackBar('Sucesso!')
-            // }}
-            this.snackbar.openuSuccessSnackBar(`Sucesso! ${evt.statusText}`);
-            this.global.setIsLoading(false);
+            if(evt.body){
+              if(request.method != "GET")
+                this.snackbar.openuSuccessSnackBar('Sucesso!')
+              
+              this.global.setIsLoading(false);
+            }
+            // this.snackbar.openuSuccessSnackBar(`Sucesso! ${evt.statusText}`);
+            // this.global.setIsLoading(false);
           }}
       ),
 
@@ -44,8 +47,7 @@ export class RequestInterceptor implements HttpInterceptor {
         else {
           console.log('this is server side error');
           console.log(error);
-          console.log();
-          errorMsg = `Erro: ${error.error.message}`;
+          errorMsg = `Erro: ${error.error}`;
         }
         // this.snackbar.openErrorSnackBar(errorMsg);
         return throwError(new Error(errorMsg));

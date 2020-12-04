@@ -15,6 +15,19 @@ namespace Mundial.Infra.Repository
         }
 
 
+        public override IQueryable<Salesman> GetItensSearchingAllColumns(string value)
+        { 
+            try
+            {
+                return _SalesMancontext.Where(x => (x.Name.Contains(value) ||
+                x.Number.ToString().Contains(value)) && x.ExclusionDate == null);
+            }
+            catch(Exception e)
+            { 
+                throw e;
+            }
+            
+        }
 
 
     }

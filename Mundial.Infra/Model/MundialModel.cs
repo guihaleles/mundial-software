@@ -4,7 +4,7 @@ namespace Mundial.Infra.Model
 {
     public class MundialModel
     {
-         public int? Id {get; set;}
+        public int? Id {get; set;}
 
         public DateTime CreationDate {get; set;}
 

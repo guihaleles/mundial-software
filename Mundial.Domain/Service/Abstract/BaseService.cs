@@ -29,6 +29,19 @@ namespace Mundial.Domain.Service.Concrete
 
         }
 
+        public virtual Pagination<T> GetAllPaginated(Pagination<T> pagination)
+        {
+            var itens = _baseRepository.GetAllPaginated(pagination);
+            switch (itens.Response.Count())
+            {
+                case 0:
+                    throw new Exception($"Não existe nenhum cadastro de {name}");
+                default:
+                    return itens;
+            }         
+
+        }
+
         public virtual IEnumerable<T> GetAllValid()
         {
             var itens = _baseRepository.GetAllValidItens();
@@ -41,6 +54,19 @@ namespace Mundial.Domain.Service.Concrete
             }         
 
         }
+
+        public virtual Pagination<T> GetAllValidPaginated(Pagination<T> pagination)
+        {
+            var itens = _baseRepository.GetAllValidPaginated(pagination);
+            switch (itens.Response.Count())
+            {
+                case 0:
+                    throw new Exception($"Não existe nenhum cadastro de {name}");
+                default:
+                    return itens;
+            }   
+
+        }        
 
         public virtual T GetValidByNumber(int number)
         {
@@ -57,6 +83,33 @@ namespace Mundial.Domain.Service.Concrete
             }
            
         }
+
+        public virtual IEnumerable<T> Search(string value)
+        {
+            var itens =  _baseRepository.GetItensSearchingAllColumns(value);
+
+            switch (itens.Count())
+            {
+                case 0:
+                    throw new Exception($"Não existe nenhum cadastro de {name} com esse filtro");
+                default:
+                    return itens;
+            }
+
+        }
+
+        public virtual Pagination<T> GetSearchPaginated(Pagination<T> pagination, string search)
+        {
+            var itens = _baseRepository.GetItensSearchingAllColumnsPaginated(pagination,search);
+            switch (itens.Response.Count())
+            {
+                case 0:
+                    throw new Exception($"Não existe nenhum cadastro de {name}");
+                default:
+                    return itens;
+            }   
+
+        } 
 
         public virtual bool Putiten (T item)
         {

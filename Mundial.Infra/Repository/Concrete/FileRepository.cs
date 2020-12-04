@@ -15,7 +15,9 @@ namespace Mundial.Infra.Repository
             _Filecontext = context.Set<File>();
         }
 
-
-
+        public override IQueryable<File> GetItensSearchingAllColumns(string value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

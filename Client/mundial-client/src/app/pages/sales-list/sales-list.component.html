@@ -3,9 +3,9 @@
   <mat-card>
     <mat-form-field appearance="legacy" class="search">
       <mat-label>Buscar</mat-label>
-      <input matInput>
+      <input matInput type="text" [(ngModel)] = "searchString">
     </mat-form-field>
-    <button mat-button>
+    <button mat-button (click)= searchPaginated()>
       <mat-icon>search</mat-icon>
     </button>
     <button mat-button class="add" (click)= create()>
@@ -15,6 +15,7 @@
   </mat-card>
 
   <mat-card>
+    <div class="sales-table">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 sales-table">
 
       <!-- Symbol Column -->
@@ -55,5 +56,16 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
     </table>
+    <mat-paginator 
+    [length]="pagination.Length"
+    [pageIndex]="pagination.PageIndex"
+    [pageSize]="pagination.PageSize"
+    [pageSizeOptions]="[2, 5, 10, 25, 100]"
+    (page)="searchPaginated($event)"
+    showFirstLastButtons
+    >
+    </mat-paginator>
+    </div>
+
   </mat-card>
 </div>

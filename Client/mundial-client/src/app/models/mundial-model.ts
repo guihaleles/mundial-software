@@ -5,9 +5,14 @@ export class MundialModel {
 
   public ExclusionDate?: Date;
 
-  constructor(creationDate: Date, exclusionDate?: Date, Id?: Number )
+  public Number?: Number;
+
+
+
+  constructor(creationDate: Date, number?: Number, exclusionDate?: Date, Id?: Number )
   {
     this.Id = Id;
+    this.Number = number;
     this.ExclusionDate = exclusionDate;
     this.CreationDate = creationDate;
   }

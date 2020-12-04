@@ -6,3 +6,4 @@
 /home/guilhermeleles/git/mundial-software/Teste/obj/Debug/netstandard2.0/Teste.AssemblyInfo.cs
 /home/guilhermeleles/git/mundial-software/Teste/obj/Debug/netstandard2.0/Teste.dll
 /home/guilhermeleles/git/mundial-software/Teste/obj/Debug/netstandard2.0/Teste.pdb
+/home/guilhermeleles/git/mundial-software/Teste/obj/Debug/netstandard2.0/Teste.csprojAssemblyReference.cache

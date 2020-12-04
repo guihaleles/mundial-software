@@ -2,15 +2,11 @@ import { MundialModel } from './mundial-model';
 
 export class Salesman extends MundialModel {
 
-  public Number : Number;
-
   public Name : String;
 
   constructor(creationDate: Date,number:Number, name:String, Id?: Number, exclusionDate?: Date,  )
   {
-    super(creationDate, exclusionDate, Id);
-
-    this.Number = number;
+    super(creationDate, number, exclusionDate, Id);
 
     this.Name = name;
   }
@@ -21,6 +17,7 @@ export class Salesman extends MundialModel {
 
   static objectsToSalesman(itens: any[]): Salesman[]{
     let salesmanArray:Salesman[] = [];
+    console.log(itens);
     
     itens.forEach((item)=> {
       salesmanArray.push(new Salesman(item.creationDate, item.number,

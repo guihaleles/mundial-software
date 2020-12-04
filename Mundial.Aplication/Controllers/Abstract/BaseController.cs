@@ -53,6 +53,38 @@ namespace Mundial.Aplication.Controllers
             }           
         }
 
+
+        [Route("GetAllValidPaginated")]
+        [HttpGet]
+        public virtual IActionResult GetAllValidPaginated(int pageSize, int pageIndex, string orderBy)
+        {
+            try
+            {
+                var page = new Pagination<T>(pageIndex,pageSize,orderBy);
+                return Ok(_baseService.GetAllValidPaginated(page));            
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            }           
+        }
+
+
+        [Route("GetAllPaginated")]
+        [HttpGet]
+        public virtual IActionResult GetAllPaginated(int pageSize, int pageIndex, string orderBy)
+        {
+            try
+            {
+                var page = new Pagination<T>(pageIndex,pageSize,orderBy);
+                return Ok(_baseService.GetAllPaginated(page));            
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            }            
+        }
+
         [Route("GetByNumber/{number}")]
         [HttpGet]
         public virtual IActionResult GetByNumber(int number)
@@ -67,11 +99,43 @@ namespace Mundial.Aplication.Controllers
             }           
         }
 
+        [Route("search/{value}")]
+        [HttpGet]
+        public virtual IActionResult Search(string value)
+        {
+            try
+            {
+                return Ok(_baseService.Search(value));            
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            }           
+        }
+
+        [Route("GetSearchPaginated")]
+        [HttpGet]
+        public virtual IActionResult GetSearchPaginated(int pageSize, int pageIndex,
+                                                         string orderBy, string search)
+        {
+            try
+            {
+                var page = new Pagination<T>(pageIndex,pageSize,orderBy);
+                return Ok(_baseService.GetSearchPaginated(page,search));            
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            }            
+        }
+
+
+
         [HttpPut]
         public virtual IActionResult Put(T item)
         {
             try
-            {
+            {                
                 return Ok(_baseService.Putiten(item));
             }
             catch(Exception e)
@@ -86,11 +150,11 @@ namespace Mundial.Aplication.Controllers
         {
             try
             {
-            return Ok(_baseService.Update(item));
+                return Ok(_baseService.Update(item));
             }
             catch(Exception e)
             {
-                return StatusCode(500,e);
+                return StatusCode(500,e.Message);
             } 
         }
 

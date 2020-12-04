@@ -24,8 +24,6 @@ namespace Mundial.Aplication.Controllers
             _logger = logger;
             _fileService = fileService;
         }
-
-
        
     }
 }

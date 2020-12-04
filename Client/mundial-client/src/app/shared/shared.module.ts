@@ -7,12 +7,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 
 import { AppRoutingModule } from '../app-routing.module';
+import { ExclusionConfirmationComponent } from './exclusion-confirmation/exclusion-confirmation.component';
 
 
 
 @NgModule({
   declarations: [
     SpinnerComponent,
+    ExclusionConfirmationComponent,
   ],
   imports: [
     CommonModule,

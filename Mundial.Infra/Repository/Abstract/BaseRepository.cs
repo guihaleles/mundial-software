@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Mundial.Infra.Model;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Mundial.Infra.Extensions;
 
 namespace Mundial.Infra.Repository
 {
@@ -32,6 +33,24 @@ namespace Mundial.Infra.Repository
            
         }
 
+        public virtual Pagination<T> GetAllPaginated(Pagination<T> page)
+        {  
+            try
+            {                        
+                                    
+                var query = _dbSet.Where(x => x.Id > 0);
+                
+                page.PaginationResult(query);
+                
+                return page;
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+           
+        }
+
         public virtual IEnumerable<T> GetAllValidItens()
         { 
             try
@@ -45,6 +64,24 @@ namespace Mundial.Infra.Repository
                 throw e;
             }
             
+        }
+
+        public virtual Pagination<T> GetAllValidPaginated(Pagination<T> page)
+        {  
+            try
+            {                        
+                                    
+                var query = _dbSet.Where(x => x.ExclusionDate == null);
+
+                page.PaginationResult(query);
+                
+                return page;
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+           
         }
 
 
@@ -82,7 +119,6 @@ namespace Mundial.Infra.Repository
         }
 
 
-
         public virtual IEnumerable<T> GetItenById(int id)
         { 
             try
@@ -112,6 +148,15 @@ namespace Mundial.Infra.Repository
             }
             
         }
+
+        public abstract IQueryable<T> GetItensSearchingAllColumns(string value);  
+
+        public virtual Pagination<T> GetItensSearchingAllColumnsPaginated(Pagination<T> page,string value)
+        {
+            page.PaginationResult(GetItensSearchingAllColumns(value));
+            
+            return page;
+        }  
         
         public virtual bool PutIten(T item)
         {
@@ -134,6 +179,14 @@ namespace Mundial.Infra.Repository
         { 
             try
             {
+                var numberCheck = _dbSet.Where(x => x.Number == newItem.Number 
+                                    && x.Id != oldItemId && x.ExclusionDate == null)
+                                    .ToList();
+                if(numberCheck.Any())
+                {
+                    throw new Exception("Já existe um item com esse número");
+                }
+
                 var itenToExclud = _dbSet.Where(x => x.Id == oldItemId)                                 
                                         .Single();
 
