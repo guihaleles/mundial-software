@@ -16,4 +16,6 @@ export class MundialModel {
     this.ExclusionDate = exclusionDate;
     this.CreationDate = creationDate;
   }
+
+ 
 }

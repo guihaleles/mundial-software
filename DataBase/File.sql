@@ -14,7 +14,7 @@ CREATE TABLE File (
 
         -- CustomerAddressId int,
 
-        City varchar(255) NOT NULL,
+        City varchar(255) ,
 
         Street varchar(255),
 
@@ -34,7 +34,7 @@ CREATE TABLE File (
 
         -- WorkAddressId int,
 
-        WorkCity varchar(255) NOT NULL,
+        WorkCity varchar(255) ,
 
         WorkStreet varchar(255),
 

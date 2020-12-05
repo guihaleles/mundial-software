@@ -19,11 +19,12 @@ export class FileModalComponent implements OnInit {
      
       console.log(this.data);
       if(this.data){
-        this.setVariable(data);
+        this.setFormVariable(data);
         this.isEditing = true;
       }
       else{
-        this.setNullVariable()
+        this.setNullFormVariable();
+        console.log("set null variable")
       }
 
     }
@@ -31,7 +32,8 @@ export class FileModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  save() {    
+  save() {
+    console.log(this.form);
     if(!this.form.valid){
       Object.keys(this.form.controls).forEach(field => { 
         const control = this.form.get(field);
@@ -67,80 +69,88 @@ export class FileModalComponent implements OnInit {
   }
 
   update(){
-    throw Error("Update não implementado ainda");
+    let values = this.form.value;
+    let itemToUpdate = File.objectToClass(values);
+    itemToUpdate.CreationDate = new Date();
+    itemToUpdate.Id = this.data.Id;
+    console.log(itemToUpdate);
+    console.log("Update");
+    this.service.update(itemToUpdate).subscribe(
+      () => this.dialogRef.close(true),
+    );
   }
 
-  setVariable(data:File){
+  setFormVariable(data:File){
     this.form = this.formBuilder.group({
-      creationDate:[data.CreationDate, Validators.required],
+      creationDate:[data.CreationDate, Validators.nullValidator],
       number:[data.Number, Validators.required],
       creationFileDate:[data.CreationFileDate, Validators.required],
       name:[data.Name, Validators.required],
-      city : [data.City, Validators.required],
-      street :  [data.Street, Validators.required], 
-      neighborhood : [data.Neighborhood, Validators.required],
-      houseNumber : [data.HouseNumber, Validators.required],
-      complement : [data.Complement, Validators.required],
-      cEP : [data.CEP, Validators.required],
-      phoneNumber : [data.PhoneNumber, Validators.required],
-      profession : [data.Profession, Validators.required],
-      salary : [data.Salary, Validators.required],
-      workCity : [data.WorkCity, Validators.required],
-      workStreet : [data.WorkStreet, Validators.required],  
-      workNeighborhood : [data.WorkNeighborhood, Validators.required],  
-      workNumber :  [data.WorkNumber, Validators.required],
-      workComplement : [data.Complement, Validators.required],
-      workCEP : [data.CEP, Validators.required],
-      cPF : [data.CPF, Validators.required],
-      rG : [data.RG, Validators.required],
-      work : [data.Work, Validators.required],
-      dateOfBirth : [data.DateOfBirth, Validators.required],
-      partnerName : [data.PartnerName, Validators.required],
-      partnerWork : [data.PartnerWork, Validators.required],
-      partnerPhone : [data.PartnerPhone, Validators.required],
-      partnerSalary : [data.PartnerSalary, Validators.required],
-      parentsObservation : [data.ParentsObservation, Validators.required],
-      othersStores : [data.OthersStores, Validators.required],
-      friendName : [data.FriendName, Validators.required],
-      friendsPhone : [data.FriendsPhone, Validators.required],
-      fileObservation : [data.FileObservation, Validators.required]
+      city : [data.City, Validators.nullValidator],
+      street :  [data.Street, Validators.nullValidator], 
+      neighborhood : [data.Neighborhood, Validators.nullValidator],
+      houseNumber : [data.HouseNumber, Validators.nullValidator],
+      complement : [data.Complement, Validators.nullValidator],
+      cEP : [data.CEP, Validators.nullValidator],
+      phoneNumber : [data.PhoneNumber, Validators.nullValidator],
+      profession : [data.Profession, Validators.nullValidator],
+      salary : [data.Salary, Validators.nullValidator],
+      workCity : [data.WorkCity, Validators.nullValidator],
+      workStreet : [data.WorkStreet, Validators.nullValidator],  
+      workNeighborhood : [data.WorkNeighborhood, Validators.nullValidator],  
+      workNumber :  [data.WorkNumber, Validators.nullValidator],
+      workComplement : [data.Complement, Validators.nullValidator],
+      workCEP : [data.CEP, Validators.nullValidator],
+      cPF : [data.CPF, Validators.nullValidator],
+      rG : [data.RG, Validators.nullValidator],
+      work : [data.Work, Validators.nullValidator],
+      dateOfBirth : [data.DateOfBirth, Validators.nullValidator],
+      partnerName : [data.PartnerName, Validators.nullValidator],
+      partnerWork : [data.PartnerWork, Validators.nullValidator],
+      partnerPhone : [data.PartnerPhone, Validators.nullValidator],
+      partnerSalary : [data.PartnerSalary, Validators.nullValidator],
+      parentsObservation : [data.ParentsObservation, Validators.nullValidator],
+      othersStores : [data.OthersStores, Validators.nullValidator],
+      friendName : [data.FriendName, Validators.nullValidator],
+      friendsPhone : [data.FriendsPhone, Validators.nullValidator],
+      fileObservation : [data.FileObservation, Validators.nullValidator]
     }) 
   }
 
-  setNullVariable(){
+  setNullFormVariable(){
     this.form = this.formBuilder.group({
-      creationDate:[null, Validators.required],
+      creationDate:[null, Validators.nullValidator],
       number:[null, Validators.required],
       creationFileDate:[null, Validators.required],
       name:[null, Validators.required],
-      city : [null, Validators.required],
-      street :  [null, Validators.required], 
-      neighborhood : [null, Validators.required],
-      houseNumber : [null, Validators.required],
-      complement : [null, Validators.required],
-      cEP : [null, Validators.required],
-      phoneNumber : [null, Validators.required],
-      profession : [null, Validators.required],
-      salary : [null, Validators.required],
-      workCity : [null, Validators.required],
-      workStreet : [null, Validators.required],  
-      workNeighborhood : [null, Validators.required],  
-      workNumber :  [null, Validators.required],
-      workComplement : [null, Validators.required],
-      workCEP : [null, Validators.required],
-      cPF : [null, Validators.required],
-      rG : [null, Validators.required],
-      work : [null, Validators.required],
-      dateOfBirth : [null, Validators.required],
-      partnerName : [null, Validators.required],
-      partnerWork : [null, Validators.required],
-      partnerPhone : [null, Validators.required],
-      partnerSalary : [null, Validators.required],
-      parentsObservation : [null, Validators.required],
-      othersStores : [null, Validators.required],
-      friendName : [null, Validators.required],
-      friendsPhone : [null, Validators.required],
-      fileObservation : [null, Validators.required]
+      city : [null, Validators.nullValidator],
+      street :  [null, Validators.nullValidator], 
+      neighborhood : [null, Validators.nullValidator],
+      houseNumber : [null, Validators.nullValidator],
+      complement : [null, Validators.nullValidator],
+      cEP : [null, Validators.nullValidator],
+      phoneNumber : [null, Validators.nullValidator],
+      profession : [null, Validators.nullValidator],
+      salary : [null, Validators.nullValidator],
+      workCity : [null, Validators.nullValidator],
+      workStreet : [null, Validators.nullValidator],  
+      workNeighborhood : [null, Validators.nullValidator],  
+      workNumber :  [null, Validators.nullValidator],
+      workComplement : [null, Validators.nullValidator],
+      workCEP : [null, Validators.nullValidator],
+      cPF : [null, Validators.nullValidator],
+      rG : [null, Validators.nullValidator],
+      work : [null, Validators.nullValidator],
+      dateOfBirth : [null, Validators.nullValidator],
+      partnerName : [null, Validators.nullValidator],
+      partnerWork : [null, Validators.nullValidator],
+      partnerPhone : [null, Validators.nullValidator],
+      partnerSalary : [null, Validators.nullValidator],
+      parentsObservation : [null, Validators.nullValidator],
+      othersStores : [null, Validators.nullValidator],
+      friendName : [null, Validators.nullValidator],
+      friendsPhone : [null, Validators.nullValidator],
+      fileObservation : [null, Validators.nullValidator]
     }) 
   }
 
