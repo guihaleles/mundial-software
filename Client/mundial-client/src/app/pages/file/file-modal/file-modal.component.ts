@@ -3,82 +3,27 @@ import { FileService } from 'src/app/services/file.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { File } from '../../../models/file';
+import { BaseModalComponent } from 'src/app/shared/AbstractComponent/base-modal.component';
 
 @Component({
   selector: 'app-file-modal',
   templateUrl: './file-modal.component.html',
   styleUrls: ['./file-modal.component.scss']
 })
-export class FileModalComponent implements OnInit {
+export class FileModalComponent extends BaseModalComponent<File>   {
   form: FormGroup = this.formBuilder.group({});
   isEditing: boolean = false;
   
   constructor(public dialogRef: MatDialogRef<FileModalComponent>,
-    private service: FileService, private formBuilder: FormBuilder,
+    public service: FileService, public formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: File) {    
      
-      console.log(this.data);
-      if(this.data){
-        this.setFormVariable(data);
-        this.isEditing = true;
-      }
-      else{
-        this.setNullFormVariable();
-        console.log("set null variable")
-      }
+      super(dialogRef,service, formBuilder)
 
+      this.data = data;
+      
     }
 
-  ngOnInit(): void {
-  }
-
-  save() {
-    console.log(this.form);
-    if(!this.form.valid){
-      Object.keys(this.form.controls).forEach(field => { 
-        const control = this.form.get(field);
-        if(control)           
-          control.markAsTouched({ onlySelf: true });       
-      });
-      throw Error("Alguns campos obrigatórios não foram preenchidos");
-    }
-    else{
-      if(!this.isEditing){
-        this.putNew();
-      }else if(this.data.Id){
-        this.update();
-      }else{
-        throw Error("Não foi possível salvar");
-      }
-    }    
-  }
-
-  close(){
-    this.dialogRef.close(false);
-  }
-
-  putNew(){
-    let values = this.form.value;
-    values.creationDate = new Date();
-    let newItem = File.objectToClass(values);
-    console.log("put");
-    console.log(newItem);
-    this.service.put(newItem).subscribe(
-      () => this.dialogRef.close(true),
-    );
-  }
-
-  update(){
-    let values = this.form.value;
-    let itemToUpdate = File.objectToClass(values);
-    itemToUpdate.CreationDate = new Date();
-    itemToUpdate.Id = this.data.Id;
-    console.log(itemToUpdate);
-    console.log("Update");
-    this.service.update(itemToUpdate).subscribe(
-      () => this.dialogRef.close(true),
-    );
-  }
 
   setFormVariable(data:File){
     this.form = this.formBuilder.group({

@@ -12,4 +12,9 @@ export class SalesmanService extends HttpService<Salesman>{
     super(http,'Salesman');
    }
 
+
+  public objectToClass(item: any): Salesman{
+    return new Salesman(item.creationDate, item.number, item.name, item.id, item.exclusionDate)
+  }
+
 }
