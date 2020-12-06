@@ -1,4 +1,4 @@
-import { MundialModel } from './mundial-model';
+import { MundialModel } from './abstract/mundial-model';
 
 export class File extends MundialModel {
 
@@ -70,7 +70,9 @@ export class File extends MundialModel {
   public FileObservation?: string;
 
   constructor(
+    Id: number,
     CreationDate: Date,
+    ExclusionDate: Date,
     Number: number,
     CreationFileDate: Date,
     Name: string,
@@ -107,7 +109,7 @@ export class File extends MundialModel {
     FriendsPhone?: string,
     FileObservation?: string
   ) {
-    super(CreationDate, Number);
+    super(CreationDate, Number, ExclusionDate,Id);
 
     this.Number = Number;
 
@@ -180,51 +182,5 @@ export class File extends MundialModel {
     this.FileObservation = FileObservation;
   }
 
-  static objectToClass(item: any): File{
-    return new File(
-      item.creationDate,
-      item.number,
-      item.creationFileDate,
-      item.name,
-      item.city ,
-      item.street ,   
-      item.neighborhood ,  
-      item.houseNumber ,   
-      item.complement ,
-      item.cEP ,
-      item.phoneNumber ,
-      item.profession ,
-      item.salary ,
-      item.workCity ,
-      item.workStreet ,   
-      item.workNeighborhood ,  
-      item.workNumber ,   
-      item.workComplement ,
-      item.workCEP ,
-      item.cPF ,
-      item.rG ,
-      item.work ,
-      item.dateOfBirth ,
-      item.partnerName ,
-      item.partnerWork ,
-      item.partnerPhone ,
-      item.partnerSalary ,
-      item.parentsObservation ,
-      item.othersStores ,
-      item.friendName ,
-      item.friendsPhone ,
-      item.fileObservation 
-    )
-  }
-
-  static objectsToClass(itens: any[]): File[]{
-    let array:File[] = [];
-    console.log(itens);
-    
-    itens.forEach((item)=> {
-      array.push(File.objectToClass(item))
-    })
-
-    return array;
-  }
+  
 }

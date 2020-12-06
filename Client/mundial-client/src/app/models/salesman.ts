@@ -1,10 +1,10 @@
-import { MundialModel } from './mundial-model';
+import { MundialModel } from './abstract/mundial-model';
 
 export class Salesman extends MundialModel {
 
-  public Name : String;
+  public Name : string;
 
-  constructor(creationDate: Date,number:Number, name:String, Id?: Number, exclusionDate?: Date,  )
+  constructor(creationDate: Date,number:number, name:string, Id?: number, exclusionDate?: Date,  )
   {
     super(creationDate, number, exclusionDate, Id);
 
@@ -26,5 +26,6 @@ export class Salesman extends MundialModel {
 
     return salesmanArray;
   }
+
 
 }

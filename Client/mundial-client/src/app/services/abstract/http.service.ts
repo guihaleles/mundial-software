@@ -1,9 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { take, map } from 'rxjs/operators';
 import{ environment } from '../../../environments/environment';
 
-import{ Salesman} from '../../models/salesman'
 import { Pagination } from '../../models/pagination';
 
 
@@ -13,6 +11,19 @@ export abstract class HttpService<T>  {
   private readonly API = `${environment.API}/${this.controllerName}`;
 
   constructor(private http: HttpClient, public controllerName: string) { }
+
+  abstract objectToClass(item: any): T;
+
+  public objectsToClass(itens: any[]): T[]{
+    let array:T[] = [];
+    console.log(itens);
+    
+    itens.forEach((item)=> {
+      array.push(this.objectToClass(item))
+    })
+
+    return array;
+  }
 
   getAll() {
     return this.http.get<T[]>(this.API).pipe(

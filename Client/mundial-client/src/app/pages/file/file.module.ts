@@ -27,7 +27,8 @@ import { FileModalComponent } from './file-modal/file-modal.component';
     FileComponent
   ],
   providers: [
-    FileService
+    FileService,
+    FileModalComponent
   ]
 })
 export class FileModule { }

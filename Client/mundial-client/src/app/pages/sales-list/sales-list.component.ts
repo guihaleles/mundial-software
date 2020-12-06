@@ -7,111 +7,24 @@ import { ExclusionConfirmationComponent } from 'src/app/shared/exclusion-confirm
 import { Pagination } from 'src/app/models/pagination';
 import { PageEvent } from '@angular/material/paginator';
 import { take } from 'rxjs/operators';
+import { BaseComponent } from 'src/app/shared/AbstractComponent/base.component';
 
 @Component({
   selector: 'app-sales-list',
   templateUrl: './sales-list.component.html',
   styleUrls: ['./sales-list.component.scss']
 })
-export class SalesListComponent implements OnInit {
-  searchString: string = "";
+export class SalesListComponent extends BaseComponent<Salesman> {
+
   displayedColumns: string[] = ['number', 'name', 'creationDate', 'edit', 'exclude'];
-  salesList: Array<Salesman> = [];
-  dataSource = this.salesList;
-  isloading: boolean = false;
-  pagination: Pagination;
+  modalComponent = SalesModalComponent;
 
-  constructor(public dialog: MatDialog, private salesService: SalesmanService) {
-    this.pagination = new Pagination(null,0,20,"",5);
-   }
-
-  ngOnInit(): void {
-    this.getServerData();
+  constructor(public dialog: MatDialog, public service: SalesmanService) {
+    super(dialog,service)
+    
+    this.deleteMsg = 'Você tem certeza que deseja deletar o vendedor de número: '
   }
 
-  getServerData(event?:PageEvent){
-    if(event){
-      this.pagination.PageIndex = event.pageIndex;
-      this.pagination.PageSize = event.pageSize;
-    }
-    this.dataSource = [];
-    this.dataSource = [...this.dataSource]
-
-    this.salesService.getItensPaginated(this.pagination).subscribe(
-      (values) => {
-        this.pagination = Pagination.objectToPagination(values);
-        this.salesList = Salesman.objectsToSalesman(this.pagination.Response);
-        this.dataSource = [...this.salesList];
-      }
-    )
-  }
-
-  searchPaginated(event?:PageEvent){
-    if(this.searchString == ""){
-      this.getServerData(event);
-      return;
-    }
-    if(event){
-      this.pagination.PageIndex = event.pageIndex;
-      this.pagination.PageSize = event.pageSize;
-    }
-    else{
-      this.pagination.PageIndex = 0;  
-    }   
-    this.dataSource = [];
-    this.dataSource = [...this.dataSource]
-    this.salesService.getSearchItensPaginated(this.pagination,this.searchString).subscribe(
-      (values) => {
-        this.pagination = Pagination.objectToPagination(values);
-        this.salesList = Salesman.objectsToSalesman(this.pagination.Response);
-        this.dataSource = [...this.salesList];
-      }
-    )
-  }
-
-
-  create(){
-    this.openDialog(undefined)
-  }
-
-  edit(item:Salesman){
-    console.log(item);
-    this.openDialog(item);
-  }
-
-  openDialog(item?: Salesman) {
-    const dialogRef = this.dialog.open(SalesModalComponent,{
-      data: item ,
-      panelClass: 'dialog-class'
-    },);
-
-    dialogRef.afterClosed().pipe(take(1)).subscribe((result) => {
-      if(result)
-        this.searchPaginated();
-    });
-  }
-
-  delete(item:Salesman){
-    console.log(item);
-    let id = item.Id;
-    console.log(id);
-
-    let msg = `Você tem certeza que deseja excluir esse vendedor: ${item.Name}`
-
-    const dialogRef = this.dialog.open(ExclusionConfirmationComponent,{
-      data: msg,
-      panelClass: 'dialog-class'
-    },);
-
-    dialogRef.afterClosed().pipe(take(1)).subscribe((result) => {
-      if(result){
-        this.salesService.delete(id as number).subscribe(() => {
-          this.searchPaginated();
-        })
-      }
-    });
- 
-  }
 
 
 }

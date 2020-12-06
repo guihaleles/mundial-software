@@ -4,6 +4,7 @@
 - Resolver Date time, formato e diferença com o back-end.
 - Lazy-load.
 - Rout-guard. Autenticação e Autorização.
+- Corrigir MatDialogRef<any> no base-modal
 
 
 // back-end
@@ -15,6 +16,5 @@
 
 
 //Serviço de sincronização dos banco de dados
-
 
 
