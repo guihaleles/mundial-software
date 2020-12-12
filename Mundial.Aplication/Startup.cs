@@ -53,6 +53,12 @@ namespace Mundial.Aplication
 
             services.AddScoped<SalesmanRepository>();
 
+            services.AddScoped<ProductService>();
+
+            services.AddScoped<ProductEntityTypeConfiguration>();
+
+            services.AddScoped<ProductRepository>();
+
             services.AddScoped<CheckRepository>();
 
             services.AddTransient<MundialContext>();

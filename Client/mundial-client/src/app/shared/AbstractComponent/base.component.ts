@@ -43,7 +43,9 @@ export abstract class BaseComponent<T extends ImundialModel> implements OnInit {
   
       this.service.getItensPaginated(this.pagination).subscribe(
         (values) => {
+          console.log("Get server data");
           console.log(values);
+          console.log(this.pagination.PageIndex);
           this.pagination = Pagination.objectToPagination(values);
           this.list = this.service.objectsToClass(this.pagination.Response);
           this.dataSource = [...this.list];
@@ -53,6 +55,7 @@ export abstract class BaseComponent<T extends ImundialModel> implements OnInit {
 
   searchPaginated(event?:PageEvent){
     if(this.searchString == ""){
+      this.pagination.PageIndex = 0;
       this.getServerData(event);
       return;
     }

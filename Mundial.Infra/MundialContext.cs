@@ -14,6 +14,8 @@ namespace Mundial.Infra
         public DbSet<Address> Addresses {get; set;}
 
         public DbSet<Salesman> Salesmans {get; set;}
+
+        public DbSet<Product> Products {get; set;}
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -27,6 +29,8 @@ namespace Mundial.Infra
             new FileEntityTypeConfiguration().Configure(modelBuilder.Entity<File>());
 
             new AddressEntityTypeConfiguration().Configure(modelBuilder.Entity<Address>());
+
+            new ProductEntityTypeConfiguration().Configure(modelBuilder.Entity<Product>());
 
         }
     }

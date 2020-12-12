@@ -156,6 +156,21 @@ namespace Mundial.Infra.Repository
             page.PaginationResult(GetItensSearchingAllColumns(value));
             
             return page;
+        }
+
+        public virtual int GetLastNumber()
+        { 
+            try
+            {
+                var itens = _dbSet.
+                                    .ToList(); 
+                return itens;
+            }
+            catch(Exception e)
+            {   
+                throw e;
+            }
+            
         }  
         
         public virtual bool PutIten(T item)

@@ -45,7 +45,7 @@ export class File extends MundialModel {
 
   public CPF?: number;
 
-  public RG?: number;
+  public RG?: string;
 
   public Work?: string;
 
@@ -96,7 +96,7 @@ export class File extends MundialModel {
     WorkComplement?: string,
     WorkCEP?: string,
     CPF?: number,
-    RG?: number,
+    RG?: string,
     Work?: string,
     DateOfBirth?: Date,
     PartnerName?: string,

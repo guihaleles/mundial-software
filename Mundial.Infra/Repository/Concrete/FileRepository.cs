@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Mundial.Infra.Model;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using LinqKit;
 
 namespace Mundial.Infra.Repository
 {
@@ -16,8 +17,28 @@ namespace Mundial.Infra.Repository
         }
 
         public override IQueryable<File> GetItensSearchingAllColumns(string value)
-        {
-            throw new NotImplementedException();
+        {           
+            try
+            {
+                var predicate = PredicateBuilder.New<File>();
+
+                //Todo: colocar um switch com a maioria dos campos e uma escolha vinda do front
+                predicate.Or(x => x.Id.ToString().Contains(value));
+                predicate.Or(x => x.Name.Contains(value));
+                predicate.Or(x => x.City.Contains(value));
+                predicate.Or(x => x.Neighborhood.Contains(value));
+                predicate.Or(x => x.Street.Contains(value));
+                predicate.And(x => x.ExclusionDate == null);
+                
+                return _Filecontext.Where(predicate);
+            }
+            catch(Exception e)
+            { 
+                throw e;
+            }
+         
         }
     }
 }
+
+

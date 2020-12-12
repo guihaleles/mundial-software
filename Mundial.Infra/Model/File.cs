@@ -48,7 +48,7 @@ namespace Mundial.Infra.Model
      
         public int? CPF {get; set;}
 
-        public int? RG {get; set;}
+        public string RG {get; set;}
 
         public string Work {get; set;}
 
