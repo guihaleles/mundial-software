@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZUjr/pmzqFLDhF9tEzqP+ExxyGVcetJnkj/DY4INZChEUpiOlvrGR3Mncj5KuKxiCDTL9q6bSsAGQBgM1nwwbA==",
+  "dgSpecHash": "vVhLzRXvRlbc9vW55hGE0Isv3I1CD5cqZMfdi1z4hdkamP9B3Rph6SWo6gyCAB8rQVYCEvhjlyB83BB28W6y+g==",
   "success": true,
-  "projectFilePath": "/home/guilhermeleles/git/mundial-software/Mundial.Domain/Mundial.Domain.csproj",
+  "projectFilePath": "/home/guilhermeleles/git/mundial-software/Solution/Mundial.Domain/Mundial.Domain.csproj",
   "expectedPackageFiles": [
     "/home/guilhermeleles/.nuget/packages/entityframework/6.3.0/entityframework.6.3.0.nupkg.sha512",
     "/home/guilhermeleles/.nuget/packages/linqkit/1.1.21/linqkit.1.1.21.nupkg.sha512",

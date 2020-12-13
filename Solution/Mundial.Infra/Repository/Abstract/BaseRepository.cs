@@ -153,18 +153,28 @@ namespace Mundial.Infra.Repository
 
         public virtual Pagination<T> GetItensSearchingAllColumnsPaginated(Pagination<T> page,string value)
         {
-            page.PaginationResult(GetItensSearchingAllColumns(value));
+            try
+            {
+                page.PaginationResult(GetItensSearchingAllColumns(value));
             
-            return page;
+                return page;
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         public virtual int GetLastNumber()
         { 
             try
             {
-                var itens = _dbSet.
-                                    .ToList(); 
-                return itens;
+                var item = _dbSet.OrderByDescending(x => x.Number)
+                                    .Take(1)
+                                    .Select(x => x.Number)                                    
+                                    .FirstOrDefault(); 
+
+                return item;
             }
             catch(Exception e)
             {   

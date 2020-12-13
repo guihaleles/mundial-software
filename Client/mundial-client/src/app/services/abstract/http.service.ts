@@ -58,6 +58,11 @@ export abstract class HttpService<T>  {
       take(1));
   }
 
+  getLastNumber(){
+    return this.http.get<number>(`${this.API}/GetLastNumber`).pipe(
+      take(1));
+  }
+
   put(item:T) {
     return this.http.put(this.API,item).pipe(
       take(1)

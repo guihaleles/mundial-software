@@ -4,25 +4,27 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { File } from '../../../models/file';
 import { BaseModalComponent } from 'src/app/shared/AbstractComponent/base-modal.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-file-modal',
   templateUrl: './file-modal.component.html',
   styleUrls: ['./file-modal.component.scss']
 })
-export class FileModalComponent extends BaseModalComponent<File>   {
+export class FileModalComponent extends BaseModalComponent<File> implements OnInit {
   form: FormGroup = this.formBuilder.group({});
   isEditing: boolean = false;
+
   
   constructor(public dialogRef: MatDialogRef<FileModalComponent>,
     public service: FileService, public formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: File) {    
+    @Inject(MAT_DIALOG_DATA) public data: File, private datePipe: DatePipe) {    
      
       super(dialogRef,service, formBuilder)
 
-      this.data = data;
-      
+      this.data = data;      
     }
+
 
 
   setFormVariable(data:File){
@@ -63,10 +65,14 @@ export class FileModalComponent extends BaseModalComponent<File>   {
   }
 
   setNullFormVariable(){
+    this.getNextNumber();
+    let date = this.datePipe.transform(new Date(),"yyyy-MM-ddThh:mm")
+    console.log(date);
+
     this.form = this.formBuilder.group({
       creationDate:[null, Validators.nullValidator],
-      number:[null, Validators.required],
-      creationFileDate:[null, Validators.required],
+      number:[this.nextNumber, Validators.required],
+      creationFileDate:[date, Validators.required],
       name:[null, Validators.required],
       city : [null, Validators.nullValidator],
       street :  [null, Validators.nullValidator], 

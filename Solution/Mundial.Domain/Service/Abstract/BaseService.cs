@@ -109,6 +109,21 @@ namespace Mundial.Domain.Service.Concrete
                     return itens;
             }   
 
+        }
+
+        public virtual int GetLastNumber()
+        {
+            var number = _baseRepository.GetLastNumber();
+
+            if (number > 0)
+            {
+                return number;
+            }
+            else
+            {
+                throw new Exception($"Não existe nenhum cadastro de {name}");
+            }
+
         } 
 
         public virtual bool Putiten (T item)

@@ -129,6 +129,20 @@ namespace Mundial.Aplication.Controllers
             }            
         }
 
+        [Route("GetLastNumber")]
+        [HttpGet]
+        public virtual IActionResult GetLasNumber()
+        {
+            try
+            {
+                return Ok(_baseService.GetLastNumber());            
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500,e.Message);
+            }            
+        }
+
 
 
         [HttpPut]

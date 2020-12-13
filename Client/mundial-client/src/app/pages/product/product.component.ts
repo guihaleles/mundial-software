@@ -21,7 +21,6 @@ export class ProductComponent extends BaseComponent<Product> {
     
     this.deleteMsg = 'Você tem certeza que deseja deletar o produto de número: '
   }
-
-
+  
 
 }

@@ -14,6 +14,7 @@ export abstract class BaseModalComponent<T extends MundialModel> implements OnIn
     isEditing: boolean = false;
     data?: T = undefined;
     oldId:number = 0;
+    nextNumber: number = 0;
   
     constructor(public dialogRef: MatDialogRef<any>,
       public service: HttpService<T>, public formBuilder: FormBuilder)
@@ -32,6 +33,18 @@ export abstract class BaseModalComponent<T extends MundialModel> implements OnIn
         this.setNullFormVariable();
         console.log("set null variable")
       } 
+    }
+
+    getNextNumber(){
+      this.service.getLastNumber().subscribe(
+        (value) => {
+          this.nextNumber = value + 1;
+          console.log(this.nextNumber);
+          this.form.patchValue({
+            number: this.nextNumber
+          })
+        }
+      );
     }
 
     abstract setFormVariable(data:T): void;

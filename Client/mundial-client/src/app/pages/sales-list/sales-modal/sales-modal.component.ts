@@ -34,8 +34,9 @@ export class SalesModalComponent extends BaseModalComponent<Salesman> {
   }
 
   setNullFormVariable(){
+    this.getNextNumber();
     this.form = this.formBuilder.group({
-      number:[null,Validators.required],
+      number:[this.nextNumber,Validators.required],
       name:[null, Validators.required]
     });
   }

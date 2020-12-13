@@ -6,6 +6,7 @@ import { BaseModalComponent } from 'src/app/shared/AbstractComponent/base-modal.
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
+
 @Component({
   selector: 'app-product-modal',
   templateUrl: './product-modal.component.html',
@@ -38,12 +39,16 @@ export class ProductModalComponent extends BaseModalComponent<Product> {
   }
 
   setNullFormVariable(){
+    this.getNextNumber();
+
     this.form = this.formBuilder.group({
-      number:[null,Validators.required],
+      number:[this.nextNumber,Validators.required],
       name:[null, Validators.required],
       type:["Armação", Validators.nullValidator],
       observation:[null, Validators.nullValidator],
       value:[null,Validators.nullValidator]
     });
+
+
   }
 }

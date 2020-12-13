@@ -20,7 +20,8 @@ namespace Mundial.Infra.Repository
             try
             {
                 return _Productcontext.Where(x => (x.Name.Contains(value) ||
-                x.Number.ToString().Contains(value)) && x.ExclusionDate == null);
+                x.Number.ToString().Contains(value) || x.Type.Contains(value))
+                && x.ExclusionDate == null);
             }
             catch(Exception e)
             { 

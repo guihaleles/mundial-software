@@ -1730,11 +1730,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/guilhermeleles/git/mundial-software/Mundial.Infra/Mundial.Infra.csproj",
+      "projectUniqueName": "/home/guilhermeleles/git/mundial-software/Solution/Mundial.Infra/Mundial.Infra.csproj",
       "projectName": "Mundial.Infra",
-      "projectPath": "/home/guilhermeleles/git/mundial-software/Mundial.Infra/Mundial.Infra.csproj",
+      "projectPath": "/home/guilhermeleles/git/mundial-software/Solution/Mundial.Infra/Mundial.Infra.csproj",
       "packagesPath": "/home/guilhermeleles/.nuget/packages/",
-      "outputPath": "/home/guilhermeleles/git/mundial-software/Mundial.Infra/obj/",
+      "outputPath": "/home/guilhermeleles/git/mundial-software/Solution/Mundial.Infra/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/guilhermeleles/.nuget/NuGet/NuGet.Config"

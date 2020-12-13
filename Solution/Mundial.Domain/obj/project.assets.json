@@ -1748,11 +1748,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/guilhermeleles/git/mundial-software/Mundial.Domain/Mundial.Domain.csproj",
+      "projectUniqueName": "/home/guilhermeleles/git/mundial-software/Solution/Mundial.Domain/Mundial.Domain.csproj",
       "projectName": "Mundial.Domain",
-      "projectPath": "/home/guilhermeleles/git/mundial-software/Mundial.Domain/Mundial.Domain.csproj",
+      "projectPath": "/home/guilhermeleles/git/mundial-software/Solution/Mundial.Domain/Mundial.Domain.csproj",
       "packagesPath": "/home/guilhermeleles/.nuget/packages/",
-      "outputPath": "/home/guilhermeleles/git/mundial-software/Mundial.Domain/obj/",
+      "outputPath": "/home/guilhermeleles/git/mundial-software/Solution/Mundial.Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/guilhermeleles/.nuget/NuGet/NuGet.Config"
@@ -1766,8 +1766,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "/home/guilhermeleles/git/mundial-software/Mundial.Infra/Mundial.Infra.csproj": {
-              "projectPath": "/home/guilhermeleles/git/mundial-software/Mundial.Infra/Mundial.Infra.csproj"
+            "/home/guilhermeleles/git/mundial-software/Solution/Mundial.Infra/Mundial.Infra.csproj": {
+              "projectPath": "/home/guilhermeleles/git/mundial-software/Solution/Mundial.Infra/Mundial.Infra.csproj"
             }
           }
         }
