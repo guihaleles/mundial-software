@@ -44,6 +44,10 @@ export class RequestInterceptor implements HttpInterceptor {
           console.log('this is client side error');
           errorMsg = `Erro: ${error.error.message}`;
         }
+        else if(error.status === 0 && error.error instanceof ProgressEvent){
+          console.log('this is a client side error, probably connection')
+          errorMsg = 'Erro: Erro na conexão com o servidor'
+        }
         else {
           console.log('this is server side error');
           console.log(error);

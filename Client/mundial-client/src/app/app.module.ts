@@ -17,6 +17,7 @@ import { SharedModule } from './shared/shared.module';
 import { NavbarComponent } from './appComponents/navbar/navbar.component';
 import { GlobalErrorHandler } from './error-handling/global-error-handler.service';
 import { FileModule } from './pages/file/file.module';
+import { ProductModule } from './pages/product/product.module';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { FileModule } from './pages/file/file.module';
     MaterialModule,
     SalesmanModule,
     FileModule,
+    ProductModule,
     HttpClientModule,
     SharedModule
 

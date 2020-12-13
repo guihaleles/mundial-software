@@ -1,6 +1,5 @@
 // Front-end
 
-- Atualizar todos os models com o construtor igual Salesman e os metodos de conversão de objeto.
 - Resolver Date time, formato e diferença com o back-end.
 - Lazy-load.
 - Rout-guard. Autenticação e Autorização.
@@ -18,3 +17,6 @@
 //Serviço de sincronização dos banco de dados
 
 
+// Geral
+
+- Melhorar busca no cadastro de ficha

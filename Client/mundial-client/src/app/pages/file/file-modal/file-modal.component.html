@@ -2,22 +2,202 @@
     <h2 mat-dialog-title>Cadastro de ficha</h2>
       <mat-dialog-content class="file-modal-content">
         <form [formGroup]="form">
-          
-          <mat-form-field appearance="legacy" class="file-modal-input">
-              <mat-label>Data de criação</mat-label>
-              <input matInput type="date" formControlName = "creationFileDate">
-          </mat-form-field>
-
-          <mat-form-field appearance="legacy" class="file-modal-input">
-              <mat-label>Número</mat-label>
-              <input matInput type="number" formControlName = "number">
-          </mat-form-field>
+          <div>
+              <mat-form-field appearance="legacy" class="file-modal-input">
+                  <mat-label>Data de criação</mat-label>
+                  <input matInput type="datetime-local" formControlName = "creationFileDate">
+              </mat-form-field>
   
-          <mat-form-field appearance="legacy" class="file-modal-input">
-              <mat-label>Nome</mat-label>
-              <input matInput type="text" formControlName = "name">
-          </mat-form-field>
+              <mat-form-field appearance="legacy" class="file-modal-input">
+                  <mat-label>Número da Ficha</mat-label>
+                  <input matInput type="number" formControlName = "number">
+              </mat-form-field>
+          </div>
+          <div>
+            <h3> Cliente </h3>
+    
+            <mat-form-field appearance="legacy" class="file-modal-input">
+                <mat-label>Nome</mat-label>
+                <input matInput type="text" formControlName = "name">
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>cidade</mat-label>
+              <input matInput type="text" formControlName = "city">
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+                <mat-label>Rua</mat-label>
+                <input matInput type="text" formControlName = "street">
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+                <mat-label>Bairro</mat-label>
+                <input matInput type="text" formControlName = "neighborhood">
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Número</mat-label>
+              <input matInput type="number" formControlName = "houseNumber">
+            </mat-form-field>          
+            
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Complemento</mat-label>
+              <input matInput type="text" formControlName = "complement">
+            </mat-form-field>          
+            
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>CEP</mat-label>
+              <input matInput type="text" formControlName = "cep">
+            </mat-form-field>          
+            
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Número de Telefone</mat-label>
+              <input matInput type="tel" formControlName = "phoneNumber">
+            </mat-form-field>          
+            
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Profissão</mat-label>
+              <input matInput type="text" formControlName = "profession">
+            </mat-form-field>          
+            
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Salário</mat-label>
+              <span matPrefix>$&nbsp;</span>
+              <input matInput type="number" formControlName = "salary">
+            </mat-form-field>    
+            
+            <mat-form-field appearance="legacy" class="file-modal-input">
+                <mat-label>CPF</mat-label>
+                <input matInput type="number" formControlName = "cpf">
+            </mat-form-field>          
+    
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>RG</mat-label>
+              <input matInput type="text" formControlName = "rg">
+            </mat-form-field>             
+    
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Data de Nascimento</mat-label>
+              <input matInput type="datetime-local" formControlName = "dateOfBirth">
+            </mat-form-field>  
           
+          </div>
+
+          <div>
+
+            <h3> Trabalho </h3>
+            
+            <mat-form-field appearance="legacy" class="file-modal-input">
+                <mat-label>Nome do Trabalho</mat-label>
+                <input matInput type="text" formControlName = "work">
+            </mat-form-field> 
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Cidade</mat-label>
+              <input matInput type="text" formControlName = "workCity">
+            </mat-form-field>          
+            
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Rua</mat-label>
+              <input matInput type="text" formControlName = "workStreet">
+            </mat-form-field>          
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Bairro</mat-label>
+              <input matInput type="text" formControlName = "workNeighborhood">
+            </mat-form-field>          
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Número</mat-label>
+              <input matInput type="number" formControlName = "workNumber">
+            </mat-form-field>          
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Complemento</mat-label>
+              <input matInput type="text" formControlName = "workComplement">
+            </mat-form-field>          
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>CEP</mat-label>
+              <input matInput type="text" formControlName = "workCEP">
+            </mat-form-field>
+
+            
+          </div>
+
+          <div>
+
+            <h3> Cônjuge:</h3>
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Nome</mat-label>
+              <input matInput type="text" formControlName = "partnerName">
+            </mat-form-field>          
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Trabalho</mat-label>
+              <input matInput type="text" formControlName = "partnerWork">
+            </mat-form-field>          
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Telefone</mat-label>
+              <input matInput type="tel" formControlName = "partnerPhone">
+            </mat-form-field>          
+
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Salário</mat-label>
+              <input matInput type="number" formControlName = "partnerSalary">
+            </mat-form-field> 
+          
+          </div>
+
+          <div>
+
+            <h3>Pais</h3>
+            
+            <mat-form-field appearance="legacy" class="file-modal-input text-area">
+              <mat-label>Nome / Tel / End</mat-label>
+              <textarea matInput type="text" formControlName = "parentsObservation"></textarea>
+            </mat-form-field> 
+          
+          </div>
+
+          <div>
+            <h3> Outras Lojas </h3>
+            <mat-form-field appearance="legacy" class="file-modal-input">
+              <mat-label>Outras lojas que comprou à crédito</mat-label>
+              <input matInput type="text" formControlName = "othersStores">
+            </mat-form-field>          
+          </div>
+
+          <div>
+              <h3>Amigo</h3>
+              <mat-form-field appearance="legacy" class="file-modal-input">
+                <mat-label>Nome</mat-label>
+                <input matInput type="text" formControlName = "friendName">
+              </mat-form-field>          
+      
+              <mat-form-field appearance="legacy" class="file-modal-input">
+                <mat-label>Telefone</mat-label>
+                <input matInput type="tel" formControlName = "friendsPhone">
+              </mat-form-field>
+          </div>
+          
+          <div>
+            <h3> Outras informações</h3>
+            <mat-form-field appearance="legacy" class="file-modal-input text-area">
+              <mat-label>Observações gerais</mat-label>
+              <textarea matInput type="text" formControlName = "fileObservation"></textarea>
+            </mat-form-field> 
+          </div>
+                 
+
         </form>
       </mat-dialog-content>
       <mat-dialog-actions>

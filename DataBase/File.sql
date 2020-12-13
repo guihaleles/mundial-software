@@ -48,7 +48,7 @@ CREATE TABLE File (
 
         CPF int,
 
-        RG int,
+        RG varchar(255),
 
         Work varchar(255),
 
