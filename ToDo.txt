@@ -4,6 +4,7 @@
 - Lazy-load.
 - Rout-guard. Autenticação e Autorização.
 - Corrigir MatDialogRef<any> no base-modal
+- Modificar tipos de mercadoria que está diretamente no front-end
 
 
 // back-end
@@ -12,7 +13,7 @@
 - Autorização e Autenticação
 - Não permitir vendedores e usuários com o mesmo nome
 - Mudar a string do banco de dados para o App.config
-
+- Alterar para métodos assíncronos
 
 //Serviço de sincronização dos banco de dados
 

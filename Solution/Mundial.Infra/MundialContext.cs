@@ -16,6 +16,10 @@ namespace Mundial.Infra
         public DbSet<Salesman> Salesmans {get; set;}
 
         public DbSet<Product> Products {get; set;}
+
+        public DbSet<Installment> Installments {get; set;}
+
+        public DbSet<ServiceOrder> ServiceOrders {get; set;}
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,6 +36,9 @@ namespace Mundial.Infra
 
             new ProductEntityTypeConfiguration().Configure(modelBuilder.Entity<Product>());
 
+            new InstallmentEntityTypeConfiguration().Configure(modelBuilder.Entity<Installment>());
+
+            new ServiceOrderEntityTypeConfiguration().Configure(modelBuilder.Entity<ServiceOrder>());
         }
     }
 }

@@ -59,6 +59,18 @@ namespace Mundial.Aplication
 
             services.AddScoped<ProductRepository>();
 
+            services.AddScoped<ServiceOrderService>();
+
+            services.AddSingleton<ServiceOrderEntityTypeConfiguration>();
+
+            services.AddScoped<ServiceOrderRepository>();
+
+            services.AddScoped<InstallmentService>();
+
+            services.AddSingleton<InstallmentEntityTypeConfiguration>();
+
+            services.AddScoped<InstallmentRepository>();
+
             services.AddScoped<CheckRepository>();
 
             services.AddTransient<MundialContext>();

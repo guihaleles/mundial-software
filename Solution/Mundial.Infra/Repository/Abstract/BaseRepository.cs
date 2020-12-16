@@ -232,6 +232,17 @@ namespace Mundial.Infra.Repository
 
         }
 
+        public virtual bool UpdateChildren(int oldItemId, int number)
+        {
+            return true;
+        }
+
+        public virtual bool HasChildren()
+        {
+            return false;
+        }
+
+
         public virtual bool DeleteIten(int id)
         {
             try

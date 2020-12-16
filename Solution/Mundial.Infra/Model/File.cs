@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace Mundial.Infra.Model
 {
@@ -8,7 +11,7 @@ namespace Mundial.Infra.Model
 
         public string Name { get; set; }
 
-        // public int? CustomerAddressId {get; set;}
+        public IEnumerable<ServiceOrder> ServicesOrders {get; set;}
 
         public string City {get; set;}
 
@@ -21,16 +24,12 @@ namespace Mundial.Infra.Model
         public string Complement {get; set;}
 
         public string CEP {get; set;}
-        
-        // public Address CustomerAddress {get; set;}
 
         public string PhoneNumber {get; set;}
 
         public string Profession {get; set;}
 
         public float? Salary {get; set;}
-
-        // public int? WorkAddressId {get; set;}
 
         public string WorkCity {get; set;}
 
@@ -43,8 +42,6 @@ namespace Mundial.Infra.Model
         public string WorkComplement {get; set;}
 
         public string WorkCEP {get; set;}
-
-        // public Address WorkAddress {get; set;}
      
         public int? CPF {get; set;}
 

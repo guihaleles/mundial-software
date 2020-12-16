@@ -23,6 +23,7 @@ namespace Mundial.Infra.EntityConfigurations
             builder
                 .Property(s => s.CreationDate)
                 .IsRequired();
+
                
         }
     }

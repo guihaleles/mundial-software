@@ -11,9 +11,12 @@ namespace Mundial.Infra.Repository
     {
         private readonly DbSet<File> _Filecontext;
 
+        private readonly DbSet<ServiceOrder> _ServiceOrdercontext;
+
         public FileRepository(MundialContext context) : base(context)
         {
             _Filecontext = context.Set<File>();
+            _ServiceOrdercontext = context.Set<ServiceOrder>();
         }
 
         public override IQueryable<File> GetItensSearchingAllColumns(string value)
