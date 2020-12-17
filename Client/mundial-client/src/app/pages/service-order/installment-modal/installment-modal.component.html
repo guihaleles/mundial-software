@@ -1,0 +1,23 @@
+<div>
+    <h2 mat-dialog-title>Cadastro de OSM</h2>
+      <mat-dialog-content class="installment-modal-content">
+        <form [formGroup]="form">
+          <div>
+              <mat-form-field appearance="legacy" class="installment-modal-input">
+                  <mat-label>Data de criação</mat-label>
+                  <input matInput type="datetime-local" formControlName = "creationDate">
+              </mat-form-field>
+  
+              <mat-form-field appearance="legacy" class="installment-modal-input">
+                  <mat-label>Valor</mat-label>
+                  <input matInput type="number" formControlName = "originalValue">
+              </mat-form-field>
+          </div>
+        </form>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-raised-button (click) = close()>Calcelar</button>
+        <button mat-raised-button (click) = save()>Salvar</button>
+      </mat-dialog-actions>
+  
+  </div>

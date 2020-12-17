@@ -1,0 +1,46 @@
+.service-order{
+    display: flex;
+    flex-direction: column;
+  }
+  
+.service-order-table{
+  width: 100%;
+}
+
+.mat-card{
+  margin: 2px;
+  display: flex;
+  justify-content: center;
+}
+
+.search{
+  width: 50%;
+}
+
+.add{
+  margin-left: 5%;
+}
+
+.number{
+  width:20%;
+  margin: 2%;
+}
+
+.name{
+  width: 30%;
+  padding-right: 2%;
+}
+
+.date{
+  width: 20%;
+  padding-right: 2%;
+}
+
+.dialog-class{
+
+  height: 400px;
+  width: 600px;
+  border-radius: 10px;
+  background: lightcyan;
+
+}

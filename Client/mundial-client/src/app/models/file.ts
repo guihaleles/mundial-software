@@ -6,9 +6,6 @@ export class File extends MundialModel {
 
   public Name: string;
 
-  // public CustomerAddressId: number;
-
-  // public CustomerAddress? Address;
   public City?: string;
 
   public Street?: string; 
@@ -26,10 +23,6 @@ export class File extends MundialModel {
   public Profession?: string;
 
   public Salary?: number;
-
-  // public WorkAddressId?: number;
-
-  // public WorkAddress?: Address;
 
   public WorkCity?: string;
 
@@ -76,8 +69,6 @@ export class File extends MundialModel {
     Number: number,
     CreationFileDate: Date,
     Name: string,
-    // CustomerAddressId?: number,
-    // CustomerAddress?: Address,
     City?: string,
     Street?: string,   
     Neighborhood?: string,  
@@ -87,8 +78,6 @@ export class File extends MundialModel {
     PhoneNumber?: string,
     Profession?: string,
     Salary?: number,
-    // WorkAddressId?: number,
-    // WorkAddress?: Address,
     WorkCity?: string,
     WorkStreet?: string,   
     WorkNeighborhood?: string,  
@@ -117,10 +106,6 @@ export class File extends MundialModel {
 
     this.Name = Name;
 
-    // this.CustomerAddressId = CustomerAddressId;
-
-    // this.CustomerAddress = CustomerAddress;
-
     this.City = City;
 
     this.Street = Street; 
@@ -138,10 +123,6 @@ export class File extends MundialModel {
     this.Profession = Profession;
 
     this.Salary = Salary;
-
-    // this.WorkAddressId = WorkAddressId;
-
-    // this.WorkAddress = WorkAddress;
 
     this.WorkCity = WorkCity;
 

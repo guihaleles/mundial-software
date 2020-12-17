@@ -63,6 +63,11 @@ export abstract class HttpService<T>  {
       take(1));
   }
 
+  getItembyNumber(number:number){
+    return this.http.get<T>(`${this.API}/GetItembyNumber/${number}`).pipe(
+      take(1));
+  }
+
   put(item:T) {
     return this.http.put(this.API,item).pipe(
       take(1)
