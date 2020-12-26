@@ -20,7 +20,7 @@ import { File } from '../../../models/file';
   templateUrl: './service-order-modal.component.html',
   styleUrls: ['./service-order-modal.component.scss']
 })
-export class ServiceOrderModalComponent extends BaseModalComponent<ServiceOrder> implements OnInit {
+export class ServiceOrderModalComponent implements OnInit {
   form: FormGroup = this.formBuilder.group({});
   isEditing: boolean = false;
   deleteMsg = '';
@@ -31,32 +31,101 @@ export class ServiceOrderModalComponent extends BaseModalComponent<ServiceOrder>
   salesmans: Array<Salesman> = [];
   searchTextChanged = new Subject<number>();
   subscription: any;
+  data?: ServiceOrder;
+  oldId?:number;
+  nextNumber?:number;
 
   constructor(public dialogRef: MatDialogRef<ServiceOrderModalComponent>,
     public service: ServiceOrderService, public formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: ServiceOrder, private datePipe: DatePipe,
-    public dialog: MatDialog,public fileService:FileService,
+    private datePipe: DatePipe, public dialog: MatDialog,public fileService:FileService,
      public salesmanService:SalesmanService) {    
-     
-      super(dialogRef,service, formBuilder)
 
-      this.data = data;
-            
     }
 
   ngOnInit(){
-    this.salesmanService.getAll().subscribe(
-      (response) =>{
-        this.salesmans = response;
+      console.log(this.data);
+      if(this.data){
+        this.setFormVariable(this.data);
+        this.oldId = this.data.Id? this.data.Id: 0; 
+        this.isEditing = true;
       }
-    );
+      else{
+        this.setNullFormVariable();
+        console.log("set null variable")
+      } 
+
 
     this.subscription = this.searchTextChanged.pipe(
         debounceTime(1000),
         distinctUntilChanged(),
         mergeMap(search => this.getValues(search)))
         .subscribe(() => { });
+    }
+
+    getNextNumber(){
+      this.service.getLastNumber().subscribe(
+        (value) => {
+          this.nextNumber = value + 1;
+          console.log(this.nextNumber);
+          this.form.patchValue({
+            number: this.nextNumber
+          })
+        }
+      );
+    }
+
+
+
+    close(){
+        this.dialogRef.close(false);
+    }
+
+    putNew(){
+        let values = this.form.value;
+        values.creationDate = new Date();
+        let newItem = this.service.objectToClass(values);
+        console.log("put");
+        console.log(newItem);
+        this.service.put(newItem).subscribe(
+          () => this.dialogRef.close(true),
+        );
+    }
+
+  update(){
+      let values = this.form.value;
+      let itemToUpdate = this.service.objectToClass(values);
+      itemToUpdate.CreationDate = new Date();
+      itemToUpdate.Id = this.oldId;
+      console.log(itemToUpdate);
+      console.log("Update");
+      this.service.update(itemToUpdate).subscribe(
+        () => this.dialogRef.close(true),
+      );
   }
+
+  save() {
+      console.log(this.form);
+      if(!this.form.valid){
+        Object.keys(this.form.controls).forEach(field => { 
+          const control = this.form.get(field);
+          if(control)           
+            control.markAsTouched({ onlySelf: true });       
+        });
+        throw Error("Alguns campos obrigatórios não foram preenchidos");
+      }
+      else{
+        if(!this.isEditing){
+          this.putNew();
+        }else if(this.oldId){
+          this.update();
+        }else{
+          throw Error("Não foi possível salvar");
+        }
+      }    
+  }
+
+
+  
 
   getFile(fileNumber: number){
     return this.fileService.getItembyNumber(fileNumber).pipe(
@@ -71,41 +140,9 @@ export class ServiceOrderModalComponent extends BaseModalComponent<ServiceOrder>
 }
 
 
-  openDialog(item?: any) {
-    const dialogRef = this.dialog.open(InstallmentModalComponent,{
-      data: item ,
-      panelClass: 'dialog-class'
-    },);
-     dialogRef.afterClosed().pipe(take(1)).subscribe((result) => {
-      // if(result)
-        // this.searchPaginated();
-    });
-  }
-
-  create(){
-    this.openDialog(undefined)
-  }
-
-  edit(item:any){
-    console.log(item);
-    this.openDialog(item);
-  }
 
   delete(item:any){
-    console.log(item);
-    let id = item.Id;
-    console.log(id);
-     const dialogRef = this.dialog.open(ExclusionConfirmationComponent,{
-      data: `${this.deleteMsg} ${item.Number}`,
-      panelClass: 'dialog-class'
-    },);
-     dialogRef.afterClosed().pipe(take(1)).subscribe((result) => {
-      if(result){
-        this.service.delete(id as number).subscribe(() => {
-          // this.searchPaginated();
-        })
-      }
-    });
+    
   }
   
   search($event:any) {
